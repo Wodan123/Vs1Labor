@@ -21,27 +21,27 @@
         </nav>
     </header>
 
-    <main class="main">
-        <section class="main__tagging">
+    <main class="main row">
+        <section class="main__tagging col-3" >
             <h2>Tagging</h2>
 
             <!-- ############### VS1Lab 1a Form 1 Start -->
             <form id="tag-form" action="/tagging" method="post">
-                <fieldset>
+                <fieldset id="tagset">
                     <legend>Add a new GeoTag</legend>
                
                     
                         <label>Latitude: </label>
-                        <input type="text" name="latitude" placeholder="e.g. 49.0124" >
+                        <input type="text" class="tagitem" name="latitude" placeholder="e.g. 49.0124" >
               
                         <label>Longitude: </label>
-                        <input type="text" name="longitude" placeholder="e.g. 42.013">
+                        <input type="text" class="tagitem" name="longitude" placeholder="e.g. 42.013">
               
                         <label>Name: </label>
-                        <input type="text" name="name" placeholder="e.g. Central Berlin" required minlength="1" maxlength="10">
+                        <input type="text" class="tagitem" name="name" placeholder="e.g. Central Berlin" required minlength="1" maxlength="10">
                
                         <label>Hashtag: </label>
-                        <input type="text" name="hastag" placeholder="e.g. #ber" required minlength="2" maxlength="10">
+                        <input type="text" class="tagitem" name="hastag" placeholder="e.g. #ber" required minlength="2" maxlength="10">
                    
                         <button>Add tag</button>
                 </fieldset>
@@ -52,17 +52,16 @@
 
         </section>
 
-        <section class="main__discovery">
+        <section class="main__discovery col-9">
             <h2 class="discovery__title">Discovery</h2>
 
             <!-- ############### VS1Lab 1a Form 2 Start -->
             <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
-                <fieldset>
+                <fieldset id="discoveryset">
                     <legend>Search</legend>
-
-                        <label>Search term or keywords: </label>
-                        <input type="text" name="searchbox" placeholder="e.g. Berlin">
-                        <button>Search</button>
+                        <label class="discoveryitem">Search term or keywords: </label>
+                        <input type="text" class="discoveryitem" name="searchbox" placeholder="e.g. Berlin">
+                        <button class="discoveryitem">Search</button>
                         
                 </fieldset>
                 <!-- ... your code here ... -->
@@ -82,7 +81,7 @@
                 </div>
 
                 <div class="discovery__map">
-                    <img src="./images/mapview.jpg" alt="a map with locations" id="mapView" />
+                    <img src="./images/mapview.jpg" alt="a map with locations" id="mapView"/>
                     <span>Result map</span>
                 </div>
             </div>
