@@ -27,7 +27,7 @@
 
             <!-- ############### VS1Lab 1a Form 1 Start -->
             <form id="tag-form" action="/tagging" method="post">
-                <fieldset id="tagset">
+                <fieldset id="tagfieldset">
                     <legend>Add a new GeoTag</legend>
                
                     
@@ -41,9 +41,9 @@
                         <input type="text" class="tagitem" name="name" placeholder="e.g. Central Berlin" required minlength="1" maxlength="10">
                
                         <label>Hashtag: </label>
-                        <input type="text" class="tagitem" name="hastag" placeholder="e.g. #ber" required minlength="2" maxlength="10">
+                        <input type="text" class="tagitem" name="hastag" placeholder="e.g. #ber" pattern="#.+" required minlength="2" maxlength="10">
                    
-                        <button>Add tag</button>
+                        <button class="tagitem">Add tag</button>
                 </fieldset>
                 <!-- ... your code here ... -->
 
@@ -59,9 +59,9 @@
             <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
                 <fieldset id="discoveryset">
                     <legend>Search</legend>
-                        <label class="discoveryitem">Search term or keywords: </label>
-                        <input type="text" class="discoveryitem" name="searchbox" placeholder="e.g. Berlin">
-                        <button class="discoveryitem">Search</button>
+                        <label class="">Search term or keywords: </label>
+                        <input type="text" class="tagitem" name="searchbox" placeholder="e.g. Berlin">
+                        <button class="tagitem">Search</button>
                         
                 </fieldset>
                 <!-- ... your code here ... -->
@@ -75,8 +75,8 @@
             <div class="discovery__wrapper">
                 <div class="discovery__taglist">
                     <ul class="discovery__results" id="discoveryResults">
-                        <li>Castle (49.01379, 8.404435) #sight</li>
-                        <li>IWI (49.01379, 8.390071) #edu</li>
+                        <li class="listitem">Castle (49.01379, 8.404435) #sight</li>
+                        <li class="listitem">IWI (49.01379, 8.390071) #edu</li>
                     </ul>
                 </div>
 

@@ -47,6 +47,10 @@ a {
 /* ### TODO ### Styles for other HTML elements */
 
 /* ... your code here ... */
+input{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 
 
 /* Grid styles (no changes required) */
@@ -109,15 +113,12 @@ a {
 
 /* ### TODO ### Styles for Header Component */
 
-section{
-  display: flex;
-}
 header {
   display: flex;
   height:10%;
   justify-content: space-between;
   padding: 2em;
-  background-color: lightgray;
+  background-color: gray;
 }
 .header__image{
   height: 2em;
@@ -130,11 +131,9 @@ header {
 
 /* ### TODO ### Styles for Main Component */
 main{
-  display:flex;
+  display:flexbox;
 }
-label{
-  padding-bottom: 1em;
-}
+
 /* ... your code here ... */
 
 
@@ -146,18 +145,19 @@ label{
   padding-left: 2em;
   padding-top: 1em;
 }
-#tagset {
-  padding-left:0.5em;
-  height:25em;
-  flex-basis: 90%;
+#tagfieldset {
+  display:flex;
+  height:28rem;
   flex-direction: column;
   justify-content: center;
-  border: solid 2px black;
+  padding-inline: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 .tagitem{
-  display: flex;
-  padding:0.5em;
-  flex-basis:100%;
+  display: flexbox;
+  width: 24em;
+  height: 6em;
 }
 /* ... your code here ... */
 
@@ -170,22 +170,28 @@ label{
   flex-direction: column;
   justify-items: center;
   padding-top: 1em;
+  padding-right: 2em;
 }
 #mapView{
   display:flex;
   width: 100%;
-  height: auto
+  height: auto;
+  margin-left: 1em;
+  margin-top: 1em;
 }
 #discoveryset{
-  padding:0.5em;
+  display:flex;
+  padding-inline: 1em;
+  padding-top: 1em;
+  height:13em;
+  padding-bottom: 1em;
   flex-basis: 100%;
-  flex-direction: row;
   flex-direction: column;
 }
 .discoveryitem{
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
+  display: flexbox;
+  height: 6em;
+  width: 23em;
 }
 .discovery__search{
   display: flex;
@@ -195,20 +201,29 @@ label{
   display: flex;
   flex-direction: row;
 }
-.discovery__results{
-  
-}
+
 li{
+  display: flex;
+  width: 23em;
+  height: 4em;
   border:solid 1px black;
-  padding: 0.2em;
   background-color: lightgray;
+  margin-top: 0.5em;
+  padding:1em;
+  justify-content: space-around;
   list-style: none;
+  color:#00B7FF;
+}
+.listitem{
+  margin-top: 1em;
 }
 
 /* ### TODO ### Styles for Footer Component */
 
-footer{
-  background-color: lightgray;
+.footer{
+  display: flex;
+  background-color: gray;
+  height: 5em;
 }
 /* ... your code here ... */
 
