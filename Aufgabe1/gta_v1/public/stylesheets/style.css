@@ -47,10 +47,14 @@ a {
 /* ### TODO ### Styles for other HTML elements */
 
 /* ... your code here ... */
+<<<<<<< Updated upstream
 input{
   margin-top: 1em;
   margin-bottom: 1em;
 }
+=======
+
+>>>>>>> Stashed changes
 
 
 /* Grid styles (no changes required) */
@@ -131,28 +135,51 @@ header {
 
 /* ### TODO ### Styles for Main Component */
 main{
+<<<<<<< Updated upstream
   display:flexbox;
+=======
+  display:flex;
+  flex-wrap: wrap;
 }
+input{
+  height:4vh;
+  width:18vh;
+}
+button{
+  height: 4vh;
+  width: 18vh;
+>>>>>>> Stashed changes
+}
+
 
 /* ... your code here ... */
 
 
 /* ### TODO ### Styles for Tagging component */
 .main__tagging{
+<<<<<<< Updated upstream
   display: flex;
   flex-direction: column;
   justify-items: center;
   padding-left: 2em;
   padding-top: 1em;
+=======
+ padding:1%;
+>>>>>>> Stashed changes
 }
 #tagfieldset {
   display:flex;
   height:28rem;
   flex-direction: column;
+<<<<<<< Updated upstream
   justify-content: center;
   padding-inline: 1em;
   padding-top: 1em;
   padding-bottom: 1em;
+=======
+  padding: 1%;
+  margin: 1%;
+>>>>>>> Stashed changes
 }
 .tagitem{
   display: flexbox;
@@ -166,6 +193,7 @@ main{
 
 /* ... your code here ... */
 .main__discovery{
+<<<<<<< Updated upstream
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -200,9 +228,25 @@ main{
 .discovery__wrapper{
   display: flex;
   flex-direction: row;
+=======
+  padding:1%;
 }
-
+.discovery__wrapper{
+  display: flex;
+  margin-top:1%;
+  justify-content:space-between;
+}
+#discoveryset{
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+}
+.discovery__taglist{
+  width:33.3%;
+>>>>>>> Stashed changes
+}
 li{
+<<<<<<< Updated upstream
   display: flex;
   width: 23em;
   height: 4em;
@@ -216,7 +260,23 @@ li{
 }
 .listitem{
   margin-top: 1em;
+=======
+  padding:1%;
+  list-style: none;
+  margin-bottom: 1%;
 }
+.listitem{
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 80%;
+  background-color: #cdcdcd;
+  color: #00B7FF;
+}
+#mapView{
+  display:block;
+>>>>>>> Stashed changes
+}
+
 
 /* ### TODO ### Styles for Footer Component */
 
@@ -229,5 +289,11 @@ li{
 
 
 /* ### TODO ### Media Queries */
-
+@media only screen and (max-width: 850px) {
+ main, .discovery__wrapper{
+  display: flex;
+  flex-direction: column;
+ } 
+  
+}
 /* ... your code here ... */
