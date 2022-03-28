@@ -10,6 +10,12 @@
 
 html {
   box-sizing: border-box;
+  /* added */
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }
 
 * {
@@ -37,7 +43,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 a {
@@ -47,14 +53,7 @@ a {
 /* ### TODO ### Styles for other HTML elements */
 
 /* ... your code here ... */
-<<<<<<< Updated upstream
-input{
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-=======
 
->>>>>>> Stashed changes
 
 
 /* Grid styles (no changes required) */
@@ -119,9 +118,8 @@ input{
 
 header {
   display: flex;
-  height:10%;
   justify-content: space-between;
-  padding: 2em;
+  padding: 1%;
   background-color: gray;
 }
 .header__image{
@@ -135,9 +133,6 @@ header {
 
 /* ### TODO ### Styles for Main Component */
 main{
-<<<<<<< Updated upstream
-  display:flexbox;
-=======
   display:flex;
   flex-wrap: wrap;
 }
@@ -148,7 +143,6 @@ input{
 button{
   height: 4vh;
   width: 18vh;
->>>>>>> Stashed changes
 }
 
 
@@ -157,35 +151,19 @@ button{
 
 /* ### TODO ### Styles for Tagging component */
 .main__tagging{
-<<<<<<< Updated upstream
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  padding-left: 2em;
-  padding-top: 1em;
-=======
  padding:1%;
->>>>>>> Stashed changes
 }
 #tagfieldset {
-  display:flex;
-  height:28rem;
+  display: flex;
   flex-direction: column;
-<<<<<<< Updated upstream
-  justify-content: center;
-  padding-inline: 1em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-=======
   padding: 1%;
   margin: 1%;
->>>>>>> Stashed changes
 }
 .tagitem{
-  display: flexbox;
-  width: 24em;
-  height: 6em;
+  margin: 1%;
 }
+
+
 /* ... your code here ... */
 
 
@@ -193,48 +171,11 @@ button{
 
 /* ... your code here ... */
 .main__discovery{
-<<<<<<< Updated upstream
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  padding-top: 1em;
-  padding-right: 2em;
-}
-#mapView{
-  display:flex;
-  width: 100%;
-  height: auto;
-  margin-left: 1em;
-  margin-top: 1em;
-}
-#discoveryset{
-  display:flex;
-  padding-inline: 1em;
-  padding-top: 1em;
-  height:13em;
-  padding-bottom: 1em;
-  flex-basis: 100%;
-  flex-direction: column;
-}
-.discoveryitem{
-  display: flexbox;
-  height: 6em;
-  width: 23em;
-}
-.discovery__search{
-  display: flex;
-  flex-basis: 100%;
-}
-.discovery__wrapper{
-  display: flex;
-  flex-direction: row;
-=======
   padding:1%;
 }
 .discovery__wrapper{
   display: flex;
   margin-top:1%;
-  justify-content:space-between;
 }
 #discoveryset{
   display: flex;
@@ -243,24 +184,8 @@ button{
 }
 .discovery__taglist{
   width:33.3%;
->>>>>>> Stashed changes
 }
 li{
-<<<<<<< Updated upstream
-  display: flex;
-  width: 23em;
-  height: 4em;
-  border:solid 1px black;
-  background-color: lightgray;
-  margin-top: 0.5em;
-  padding:1em;
-  justify-content: space-around;
-  list-style: none;
-  color:#00B7FF;
-}
-.listitem{
-  margin-top: 1em;
-=======
   padding:1%;
   list-style: none;
   margin-bottom: 1%;
@@ -274,7 +199,6 @@ li{
 }
 #mapView{
   display:block;
->>>>>>> Stashed changes
 }
 
 
@@ -283,7 +207,7 @@ li{
 .footer{
   display: flex;
   background-color: gray;
-  height: 5em;
+  height: 10vh;
 }
 /* ... your code here ... */
 

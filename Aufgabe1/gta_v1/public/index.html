@@ -23,32 +23,27 @@
 
     <main class="main row">
         <section class="main__tagging col-3" >
-            <h2>Tagging</h2>
+            <h2 id="tagHeader">Tagging</h2>
 
             <!-- ############### VS1Lab 1a Form 1 Start -->
             <form id="tag-form" action="/tagging" method="post">
                 <fieldset id="tagfieldset">
                     <legend>Add a new GeoTag</legend>
                
-                    
-                        <label>Latitude: </label>
+                        <label class="tagitem">Latitude: </label>
                         <input type="text" class="tagitem" name="latitude" placeholder="e.g. 49.0124" >
               
-                        <label>Longitude: </label>
+                        <label class="tagitem">Longitude: </label>
                         <input type="text" class="tagitem" name="longitude" placeholder="e.g. 42.013">
               
-                        <label>Name: </label>
+                        <label class="tagitem">Name: </label>
                         <input type="text" class="tagitem" name="name" placeholder="e.g. Central Berlin" required minlength="1" maxlength="10">
                
-<<<<<<< Updated upstream
-                        <label>Hashtag: </label>
-                        <input type="text" class="tagitem" name="hastag" placeholder="e.g. #ber" pattern="#.+" required minlength="2" maxlength="10">
-=======
                         <label class="tagitem">Hashtag: </label>
-                        <input type="text" class="tagitem" name="hastag" placeholder="e.g. #ber" pattern="#.+" required minlength="2" maxlength="11">
->>>>>>> Stashed changes
+                        <input type="text" class="tagitem" name="hastag" placeholder="e.g. #ber" pattern="#.+" required minlength="2" maxlength="10">
                    
                         <button class="tagitem">Add tag</button>
+
                 </fieldset>
                 <!-- ... your code here ... -->
 
@@ -64,13 +59,15 @@
             <form class="discovery__search" id="discoveryFilterForm" action="/discovery" method="post">
                 <fieldset id="discoveryset">
                     <legend>Search</legend>
-                        <label class="tagitem">Search term or keywords: </label>
+                        <label class="">Search term or keywords: </label>
                         <input type="text" class="tagitem" name="searchbox" placeholder="e.g. Berlin">
                         <button class="tagitem">Search</button>
                         
                 </fieldset>
                 <!-- ... your code here ... -->
-              
+                <table>
+
+                </table>
 
             </form>
             <!-- ############### VS1Lab 1a Form 2 End -->
@@ -83,9 +80,9 @@
                     </ul>
                 </div>
 
-                <div class="discovery__map col-8">
+                <div class="discovery__map">
                     <img src="./images/mapview.jpg" alt="a map with locations" id="mapView"/>
-                    <span>Result map</span>
+                    <span id="resultMap">Result map</span>
                 </div>
             </div>
         </section>
