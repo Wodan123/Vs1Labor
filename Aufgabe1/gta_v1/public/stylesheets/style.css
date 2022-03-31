@@ -118,11 +118,16 @@ header {
   height:10%;
   justify-content: space-between;
   padding: 2em;
-  background-color: gray;
+  background-color: var(--border-color);
 }
 .header__image{
   height: 2em;
 }
+
+.header__navigation{
+  align-self: center;
+}
+
 
 
 
@@ -147,7 +152,7 @@ main{
 }
 #tagfieldset {
   display:flex;
-  height:28rem;
+  height:100%;
   flex-direction: column;
   justify-content: center;
   padding-inline: 1em;
@@ -156,8 +161,16 @@ main{
 }
 .tagitem{
   display: flexbox;
-  width: 24em;
-  height: 6em;
+  width: 100%;
+  height: 50px;
+}
+
+#tagfieldset > label{
+  color: var(--gray-color);
+}
+
+button.tagitem{
+  font-weight: bold;
 }
 /* ... your code here ... */
 
@@ -222,7 +235,8 @@ li{
 
 .footer{
   display: flex;
-  background-color: gray;
+  background-color:  lightgray;
+  ;
   height: 5em;
 }
 /* ... your code here ... */
