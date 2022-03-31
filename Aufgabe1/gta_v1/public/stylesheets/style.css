@@ -163,6 +163,7 @@ main{
   display: flexbox;
   width: 100%;
   height: 50px;
+  padding: 5px;
 }
 
 #tagfieldset > label{
@@ -171,6 +172,10 @@ main{
 
 button.tagitem{
   font-weight: bold;
+}
+
+.discovery__search > button{
+  font-weight: lighter;
 }
 /* ... your code here ... */
 
@@ -186,11 +191,12 @@ button.tagitem{
   padding-right: 2em;
 }
 #mapView{
-  display:flex;
+  display:block;
   width: 100%;
   height: auto;
   margin-left: 1em;
   margin-top: 1em;
+  display: block;
 }
 #discoveryset{
   display:flex;
@@ -208,7 +214,6 @@ button.tagitem{
 }
 .discovery__search{
   display: flex;
-  flex-basis: 100%;
 }
 .discovery__wrapper{
   display: flex;
@@ -243,5 +248,10 @@ li{
 
 
 /* ### TODO ### Media Queries */
-
+@media only screen and (max-width: 850px) {
+  main, .discovery__wrapper{
+   display: flex;
+   flex-direction: column;
+  }
+}
 /* ... your code here ... */
