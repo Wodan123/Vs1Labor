@@ -138,11 +138,11 @@ main{
 }
 input{
   height:4vh;
-  width:18vh;
+  width:18vw;
 }
 button{
   height: 4vh;
-  width: 18vh;
+  width: 18vw;
 }
 
 
@@ -152,6 +152,7 @@ button{
 /* ### TODO ### Styles for Tagging component */
 .main__tagging{
  padding:1%;
+ justify-items: center;
 }
 #tagfieldset {
   display: flex;
@@ -183,7 +184,10 @@ button{
   padding: 1%;
 }
 .discovery__taglist{
-  width:33.3%;
+  width:40%;
+}
+.discoery__map{
+  width: 60%;
 }
 li{
   padding:1%;
@@ -194,11 +198,17 @@ li{
   margin-top: 1%;
   margin-bottom: 1%;
   width: 80%;
+  text-align: center;
+  min-height: 5vh;
   background-color: #cdcdcd;
   color: #00B7FF;
 }
-#mapView{
-  display:block;
+
+#map{
+  display: block;
+  height: auto;
+  width: auto;
+  min-height: 40vh;
 }
 
 
@@ -217,7 +227,15 @@ li{
  main, .discovery__wrapper{
   display: flex;
   flex-direction: column;
+ }
+ .row > *{
+   width: 100%;
+   padding: 2%;
  } 
+ .discovery__taglist, .discovery__results , .listitem , #map{
+   width: 100%;
+ }
+ 
   
 }
 /* ... your code here ... */
