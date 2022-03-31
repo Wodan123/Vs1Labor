@@ -120,7 +120,7 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 1%;
-  background-color: gray;
+  background-color: #cdcdcd;
 }
 .header__image{
   height: 2em;
@@ -195,13 +195,13 @@ li{
   margin-bottom: 1%;
 }
 .listitem{
-  margin-top: 1%;
-  margin-bottom: 1%;
-  width: 80%;
-  text-align: center;
   min-height: 5vh;
+  width: 80%;
   background-color: #cdcdcd;
   color: #00B7FF;
+  padding-top: 3%;
+  text-align: center;
+  vertical-align: middle;
 }
 
 #map{
@@ -216,8 +216,12 @@ li{
 
 .footer{
   display: flex;
-  background-color: gray;
-  height: 10vh;
+  background-color: #cdcdcd;
+  height: 5vh;
+  justify-content: left;
+}
+#footerspan{
+  padding: 1%;
 }
 /* ... your code here ... */
 
