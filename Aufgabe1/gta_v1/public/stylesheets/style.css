@@ -62,7 +62,6 @@ input{
   justify-content: space-between;
   flex: 1;
   height:calc(100vh-200px);
-  max-height: 70%;
 }
 
 .col-1 {
@@ -154,11 +153,9 @@ main{
   justify-items: center;
   padding-left: 2em;
   padding-top: 1em;
-  height: max-content;
 }
 #tagfieldset {
   display:flex;
-  height:100%;
   flex-direction: column;
   padding-inline: 1em;
   padding-top: 1em;
@@ -191,7 +188,6 @@ main{
   justify-items: center;
   padding-top: 1em;
   padding-right: 2em;
-  height:100%;
 }
 
 button.tagitem{
@@ -206,8 +202,6 @@ button.tagitem{
 
 #mapView{
   display:block;
-  width: auto;
-  height:fit-content;
   margin-top: 1em;
 }
 .discovery__map{
