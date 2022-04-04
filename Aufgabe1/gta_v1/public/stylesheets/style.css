@@ -188,6 +188,7 @@ main{
   justify-items: center;
   padding-top: 1em;
   padding-right: 2em;
+  height: calc(100vh-200px);
 }
 
 button.tagitem{
@@ -202,10 +203,12 @@ button.tagitem{
 
 #mapView{
   display:block;
+  width: 100%;
+  height: auto;
   margin-top: 1em;
 }
 .discovery__map{
-  width:100%;
+  height: 100%;
 }
 #discoveryset{
   display:flex;
@@ -229,7 +232,6 @@ button.tagitem{
 .discovery__wrapper{
   display: flex;
   flex-direction: row;
-  height: auto;
 }
 
 
@@ -287,7 +289,7 @@ button{
     padding: 2em;
   }
   .main__discovery{
-    padding-top: 0%;
+    padding-top: 0;
   }
 
 }
