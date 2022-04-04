@@ -61,7 +61,7 @@ input{
   display: flex;
   justify-content: space-between;
   flex: 1;
-  height:100%;
+  height:calc(100vh-200px);
   max-height: 70%;
 }
 
@@ -191,7 +191,7 @@ main{
   justify-items: center;
   padding-top: 1em;
   padding-right: 2em;
-  height:max-content;
+  height:100%;
 }
 
 button.tagitem{
@@ -206,10 +206,8 @@ button.tagitem{
 
 #mapView{
   display:block;
-  width: 100%;
-  max-width:200%;
-  height:auto;
-  display: block;
+  width: auto;
+  height:fit-content;
   margin-top: 1em;
 }
 .discovery__map{
