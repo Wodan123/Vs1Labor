@@ -288,6 +288,9 @@ button{
     width:100%;
     padding: 2em;
   }
+  .listitem{
+    width: 100%;
+  }
   .main__discovery{
     padding-top: 0;
   }
