@@ -53,7 +53,9 @@ a {
 
 /* ... your code here ... */
 
-
+fieldset{
+  border: 1px solid var(--border-color);
+}
 
 /* Grid styles (no changes required) */
 
@@ -112,25 +114,23 @@ a {
   width: calc(100% - 1rem);
 }
 
-
 /* ### TODO ### Styles for Header Component */
 
+/* ... your code here ... */
 header {
   display: flex;
   justify-content: space-between;
   padding: 1%;
-  background-color: #cdcdcd;
+  background-color: var(--background-color);
+  border-bottom: solid 1px var(--border-color);
 }
 .header__image{
   height: 2em;
 }
 
-
+/* ### TODO ### Styles for Main Component */
 
 /* ... your code here ... */
-
-
-/* ### TODO ### Styles for Main Component */
 main{
   display:flex;
   flex-wrap: wrap;
@@ -144,11 +144,9 @@ button{
   width: 18vw;
 }
 
+/* ### TODO ### Styles for Tagging component */
 
 /* ... your code here ... */
-
-
-/* ### TODO ### Styles for Tagging component */
 .main__tagging{
  padding:1%;
  justify-items: center;
@@ -162,10 +160,6 @@ button{
 .tagitem{
   margin: 1%;
 }
-
-
-/* ... your code here ... */
-
 
 /* ### TODO ### Styles for Discovery component */
 
@@ -196,11 +190,12 @@ li{
 .listitem{
   min-height: 5vh;
   width: 80%;
-  background-color: #cdcdcd;
-  color: #00B7FF;
+  background-color: var(--background-color);
+  color: var(--link-color);
   padding-top: 3%;
   text-align: center;
   vertical-align: middle;
+  border: 1px solid var(--border-color);
 }
 
 #map{
@@ -210,20 +205,19 @@ li{
   min-height: 40vh;
 }
 
-
 /* ### TODO ### Styles for Footer Component */
 
+/* ... your code here ... */
 .footer{
   display: flex;
-  background-color: #cdcdcd;
+  background-color: var(--background-color);
   height: 5vh;
   justify-content: left;
+  border-top: solid 1px var(--border-color);
 }
 #footerspan{
   padding: 1%;
 }
-/* ... your code here ... */
-
 
 /* ### TODO ### Media Queries */
 @media only screen and (max-width: 850px) {
@@ -235,10 +229,12 @@ li{
    width: 100%;
    padding: 2%;
  } 
- .discovery__taglist, .discovery__results , .listitem , .tagitem, #map{
+ .discovery__taglist, .discovery__results , .listitem , .tagitem, .input, #map{
    width: 100%;
+   margin-inline: 0;
  }
- 
-  
+ fieldset{
+   padding-inline: 2%;
+ }
 }
 /* ... your code here ... */
