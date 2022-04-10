@@ -31,18 +31,18 @@
                     <legend>Add a new GeoTag</legend>
                
                         <label class="tagitem">Latitude: </label>
-                        <input type="text" class="tagitem" name="latitude" placeholder="e.g. 49.0124" disabled>
+                        <input type="text" class="tagitem" id="taglatinput" name="latitude" placeholder="e.g. 49.0124" disabled>
               
                         <label class="tagitem">Longitude: </label>
-                        <input type="text" class="tagitem" name="longitude" placeholder="e.g. 42.013" disabled>
+                        <input type="text" class="tagitem" id="taglonginput" name="longitude" placeholder="e.g. 42.013" disabled>
               
                         <label class="tagitem">Name: </label>
-                        <input type="text" class="tagitem" name="name" placeholder="e.g. Central Berlin" required minlength="1" maxlength="10">
+                        <input type="text" class="tagitem" id="tagnameinput" name="name" placeholder="e.g. Central Berlin" required minlength="1" maxlength="10">
                
                         <label class="tagitem">Hashtag: </label>
-                        <input type="text" class="tagitem" name="hastag" placeholder="e.g. #ber" pattern="#.+" required minlength="2" maxlength="10">
+                        <input type="text" class="tagitem" id="taghashtaginput" name="hastag" placeholder="e.g. #ber" pattern="#.+" required minlength="2" maxlength="10">
                    
-                        <button class="tagitem">Add tag</button>
+                        <button class="tagitem" id="tagbutton">Add tag</button>
 
                 </fieldset>
                 <!-- ... your code here ... -->
@@ -60,8 +60,8 @@
                 <fieldset id="discoveryset">
                     <legend>Search</legend>
                         <label class="tagitem">Search term or keywords: </label>
-                        <input type="text" class="tagitem" name="searchbox" placeholder="e.g. Berlin">
-                        <button class="tagitem" disabled>Search</button>
+                        <input type="text" class="tagitem" id="discoveryinput" name="searchbox" placeholder="e.g. Berlin">
+                        <button class="tagitem" id="discoverybutton" disabled>Search</button>
                         
                 </fieldset>
                 <!-- ... your code here ... -->
