@@ -226,7 +226,7 @@ li{
    width: 100%;
    padding: 2%;
  } 
- .discovery__taglist, .discovery__results , .listitem , .tagitem, .input, #map{
+ .discovery__taglist, .discovery__results , .listitem , .item, .input, #map{
    width: 100%;
    margin-inline: 0;
  }
