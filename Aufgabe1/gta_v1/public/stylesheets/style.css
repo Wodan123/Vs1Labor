@@ -143,6 +143,9 @@ button{
   height: 4vh;
   width: 18vw;
 }
+.item{
+  margin: 0.5em;
+}
 
 /* ### TODO ### Styles for Tagging component */
 
@@ -156,9 +159,6 @@ button{
   flex-direction: column;
   padding: 1%;
   margin: 1%;
-}
-.tagitem{
-  margin: 0.5em;
 }
 
 /* ### TODO ### Styles for Discovery component */
