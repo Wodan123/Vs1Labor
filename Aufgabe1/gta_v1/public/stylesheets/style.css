@@ -49,7 +49,6 @@ a {
   color: var(--link-color);
 }
 
-
 /* ### TODO ### Styles for other HTML elements */
 
 /* ... your code here ... */
@@ -65,7 +64,6 @@ fieldset{
   display: flex;
   justify-content: space-between;
   flex: 1;
-  height:calc(100vh-200px);
 }
 
 .col-1 {
@@ -166,18 +164,12 @@ button{
 /* ### TODO ### Styles for Discovery component */
 
 /* ... your code here ... */
-
-
-
 .main__discovery{
   padding:1%;
 }
 .discovery__wrapper{
   display: flex;
   margin-top:1%;
-}
-.discovery__map{
-  height: 100%;
 }
 #discoveryset{
   display: flex;
@@ -241,6 +233,5 @@ li{
  fieldset{
    padding-inline: 2%;
  }
-
 }
 /* ... your code here ... */
