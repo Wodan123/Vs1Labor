@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-<!-- File origin: VS1LAB A1a -->
-
 <html lang="en">
 
 <head>
@@ -9,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoTagApp</title>
     <link rel="stylesheet" href="./stylesheets/style.css" />
-    <script src="./Aufgabe2/javascripts/geotagging.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -82,12 +79,12 @@
                     <span id="resultMap">Result map</span>
                 </div>
             </div>
-            <table>
+            <table hidden>
                 <label class="item" hidden>Latitude: </label>
-                <input type="text" class="item" id="dislatinput" name="latitude" disabled hidden>
+                <input type="text" class="item" id="disclatinput" name="latitude" placeholder="e.g. 49.0124" disabled hidden>
       
                 <label class="item" hidden>Longitude: </label>
-                <input type="text" class="item" id="dislonginput" name="longitude" disabled hidden>
+                <input type="text" class="item" id="disclonginput" name="longitude" placeholder="e.g. 42.013" disabled hidden>
             </table>
         </section>
 
@@ -97,6 +94,13 @@
     <footer class="footer">
         <span id="footerspan">(c) 2021/22 HKA_IWI_VSYS</span>
     </footer>
+
+    <!-- Load JavaScripts
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./javascripts/geotagging.js"></script>
+    
 </body>
 
 </html>

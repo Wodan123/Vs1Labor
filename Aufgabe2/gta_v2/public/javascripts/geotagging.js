@@ -103,9 +103,35 @@ class MapManager {
  * It is called once the page has been fully loaded.
  */
 // ... your code here ...
-void function updateLocation(){
-  
+
+
+function updateLocation() {
+
+    try{
+        
+        LocationHelper.findLocation(function(loc) {
+    
+            var longitude = loc.longitude;
+            var latitude = loc.latitude;
+            let disclatinginput = document.querySelectorAll(".main__discovery input #disclatinput");
+            let disclonginput = document.querySelectorAll(".main__discovery input #disclonginput");  
+            disclatinginput.value = longitude;
+            disclonginput.value = latitude;
+            var var1 = new MapManager("INgE2DOxQWVpdxcCG5uywcOrMsY5J2Al");
+            let URL = var1.getMapUrl(latitude,longitude, [], 10);
+            let map = document.querySelector("#map");
+            map.src = URL;
+
+
+        });
+
+    }
+    catch(error) {
+        alert("error");
+    }
+
+
 }
 
 // Wait for the page to fully load its DOM content, then call updateLocation
-document.addEventListener("DOMContentLoaded", () =>  {updateLocation();});
+document.addEventListener("DOMContentLoaded", () => {updateLocation();});
