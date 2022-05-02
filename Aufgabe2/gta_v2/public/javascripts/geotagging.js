@@ -122,7 +122,6 @@ function updateLocation() {
             let map = document.querySelector("#map");
             map.src = URL;
 
-
         });
 
     }
