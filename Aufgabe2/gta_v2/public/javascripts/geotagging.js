@@ -121,7 +121,7 @@ function updateLocation() {
             let URL = var1.getMapUrl(latitude,longitude, [], 10);
             let map = document.querySelector("#map");
             map.src = URL;
-
+            disclatinginput.setAttribute("value", "latidude");
         });
 
     }
