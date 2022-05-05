@@ -113,14 +113,15 @@ function updateLocation() {
     
             var longitude = loc.longitude;
             var latitude = loc.latitude;
-            let disclatinginput = document.querySelectorAll(".main__discovery input #disclatinput");
-            let disclonginput = document.querySelectorAll(".main__discovery input #disclonginput");  
+            let disclatinginput = document.getElementById("disclatinput");
+            let disclonginput = document.getElementById("disclonginput");  
             disclatinginput.value = longitude;
             disclonginput.value = latitude;
             var var1 = new MapManager("INgE2DOxQWVpdxcCG5uywcOrMsY5J2Al");
             let URL = var1.getMapUrl(latitude,longitude, [], 10);
             let map = document.querySelector("#map");
             map.src = URL;
+<<<<<<< Updated upstream
             disclatinginput.setAttribute("value", "latidude");
         });
 
