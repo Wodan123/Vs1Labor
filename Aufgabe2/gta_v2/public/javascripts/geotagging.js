@@ -119,6 +119,7 @@ function updateLocation() {
             disclonginput.value = latitude;
             let taglatinginput = document.getElementById("taglatinput");
             let taglonginput = document.getElementById("taglonginput");
+            //Die Koordinaten in die Inputs schreiben
             disclatinginput.setAttribute("value",latitude);
             disclonginput.setAttribute("value",longitude);
             taglatinginput.setAttribute("value",latitude);
