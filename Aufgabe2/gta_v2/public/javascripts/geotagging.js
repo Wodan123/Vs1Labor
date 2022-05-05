@@ -128,11 +128,9 @@ function updateLocation() {
             let URL = var1.getMapUrl(latitude,longitude, [], 10);
             let map = document.querySelector("#map");
             map.src = URL;
-<<<<<<< Updated upstream
+
             disclatinginput.setAttribute("value", "latidude");
-=======
            
->>>>>>> Stashed changes
         });
 
     }
