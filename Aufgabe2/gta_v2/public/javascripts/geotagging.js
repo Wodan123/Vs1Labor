@@ -117,12 +117,22 @@ function updateLocation() {
             let disclonginput = document.getElementById("disclonginput");  
             disclatinginput.value = longitude;
             disclonginput.value = latitude;
+            let taglatinginput = document.getElementById("taglatinput");
+            let taglonginput = document.getElementById("taglonginput");
+            disclatinginput.setAttribute("value",latitude);
+            disclonginput.setAttribute("value",longitude);
+            taglatinginput.setAttribute("value",latitude);
+            taglonginput.setAttribute("value",longitude);
+            //Map generierung
             var var1 = new MapManager("INgE2DOxQWVpdxcCG5uywcOrMsY5J2Al");
             let URL = var1.getMapUrl(latitude,longitude, [], 10);
             let map = document.querySelector("#map");
             map.src = URL;
 <<<<<<< Updated upstream
             disclatinginput.setAttribute("value", "latidude");
+=======
+           
+>>>>>>> Stashed changes
         });
 
     }
