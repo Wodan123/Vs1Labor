@@ -125,9 +125,9 @@ function updateLocation() {
             taglatinginput.setAttribute("value",latitude);
             taglonginput.setAttribute("value",longitude);
             //Map generierung
-            var var1 = new MapManager("INgE2DOxQWVpdxcCG5uywcOrMsY5J2Al"); //Schlüssel von der WEB API 
-            let URL = var1.getMapUrl(latitude,longitude, [], 10);   
-            let map = document.querySelector("#map");
+            var mapvar = new MapManager("INgE2DOxQWVpdxcCG5uywcOrMsY5J2Al"); //Schlüssel von der WEB API 
+            let URL = mapvar.getMapUrl(latitude,longitude, [], 10);   
+            let map = document.getElementById("map");
             map.src = URL;
         });
 
