@@ -110,13 +110,13 @@ function updateLocation() {
     try{
         
         LocationHelper.findLocation(function(loc) {
-    
+            //Holen uns die Koordinaten ausm Locationhelper
             var longitude = loc.longitude;
             var latitude = loc.latitude;
+            //Selecten die richtigen Elemente ausm Discovery-HTML
             let disclatinginput = document.getElementById("disclatinput");
-            let disclonginput = document.getElementById("disclonginput");  
-            disclatinginput.value = longitude;
-            disclonginput.value = latitude;
+            let disclonginput = document.getElementById("disclonginput");
+            //Selecten die richtigen Elemente ausm Tagging-HTML
             let taglatinginput = document.getElementById("taglatinput");
             let taglonginput = document.getElementById("taglonginput");
             //Die Koordinaten in die Inputs schreiben
@@ -125,13 +125,10 @@ function updateLocation() {
             taglatinginput.setAttribute("value",latitude);
             taglonginput.setAttribute("value",longitude);
             //Map generierung
-            var var1 = new MapManager("INgE2DOxQWVpdxcCG5uywcOrMsY5J2Al");
-            let URL = var1.getMapUrl(latitude,longitude, [], 10);
+            var var1 = new MapManager("INgE2DOxQWVpdxcCG5uywcOrMsY5J2Al"); //Schlüssel von der WEB API 
+            let URL = var1.getMapUrl(latitude,longitude, [], 10);   
             let map = document.querySelector("#map");
             map.src = URL;
-
-            disclatinginput.setAttribute("value", "latidude");
-           
         });
 
     }
