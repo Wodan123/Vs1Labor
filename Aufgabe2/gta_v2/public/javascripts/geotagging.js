@@ -104,7 +104,40 @@ class MapManager {
  */
 // ... your code here ...
 
+
+function updateLocation() {
+
+    try{
+        
+        LocationHelper.findLocation(function(loc) {
+            //Holen uns die Koordinaten ausm Locationhelper
+            var longitude = loc.longitude;
+            var latitude = loc.latitude;
+            //Selecten die richtigen Elemente ausm Discovery-HTML
+            let disclatinginput = document.getElementById("disclatinput");
+            let disclonginput = document.getElementById("disclonginput");
+            //Selecten die richtigen Elemente ausm Tagging-HTML
+            let taglatinginput = document.getElementById("taglatinput");
+            let taglonginput = document.getElementById("taglonginput");
+            //Die Koordinaten in die Inputs schreiben
+            disclatinginput.setAttribute("value",latitude);
+            disclonginput.setAttribute("value",longitude);
+            taglatinginput.setAttribute("value",latitude);
+            taglonginput.setAttribute("value",longitude);
+            //Map generierung
+            var mapvar = new MapManager("INgE2DOxQWVpdxcCG5uywcOrMsY5J2Al"); //Schlüssel von der WEB API 
+            let URL = mapvar.getMapUrl(latitude,longitude, [], 10);   
+            let map = document.getElementById("map");
+            map.src = URL;
+        });
+
+    }
+    catch(error) {
+        alert("error");
+    }
+
+
+}
+
 // Wait for the page to fully load its DOM content, then call updateLocation
-document.addEventListener("DOMContentLoaded", () => {
-    alert("Please change the script 'geotagging.js'");
-});
+document.addEventListener("DOMContentLoaded", () => {updateLocation();});
