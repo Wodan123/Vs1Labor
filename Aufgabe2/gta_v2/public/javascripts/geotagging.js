@@ -108,22 +108,29 @@ function updateLocation(){
 
 
     LocationHelper.findLocation(function (loc){
-
+        
+        //Koordinaten aus dem Locationhelper in neuen Variablen speichern
         var latitudevalue = loc.latitude; 
         var longitudevalue = loc.longitude;
 
+        //Elemente aus dem HTML holen und in Variablen speichern
         let taglonginput = document.getElementById("taglonginput");
         let taglatinput = document.getElementById("taglatinput");
+        let discoverylonginput = document.getElementById("discoverylonginput");
+        let discoverylatinput = document.getElementById("discoverylatinput");
 
-       taglonginput.value = longitudevalue;
-       taglatinput.value = latitudevalue;
+        //Elementen den richtigen Werten zuweisen
+        taglonginput.value = longitudevalue;
+        taglatinput.value = latitudevalue;
+        discoverylonginput.value =discoverylonginput;
+        discoverylatinput.value =discoverylatinput;
         
-       var mapObject = new MapManager('yaMPFXET2G0vG84h8G9MxGQBo2a35oVc');
-       var urlOfGeneratedMap = mapObject.getMapUrl(latitudevalue, longitudevalue,[], 10);
-       
-       let mapvar = document.getElementById("map");
+        //Karte erstellen und zuweisen
+        var mapObject = new MapManager('yaMPFXET2G0vG84h8G9MxGQBo2a35oVc');
+        var urlOfGeneratedMap = mapObject.getMapUrl(latitudevalue, longitudevalue,[], 10);
+        let mapvar = document.getElementById("map");
+        mapvar.src = urlOfGeneratedMap;
 
-       mapvar.src = urlOfGeneratedMap;
     });
 
    
