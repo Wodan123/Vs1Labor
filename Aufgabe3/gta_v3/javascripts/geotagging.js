@@ -81,7 +81,7 @@ class MapManager {
      * @param {number} zoom The map zoom, defaults to 10
      * @returns {string} URL of generated map
      */
-    getMapUrl(latitude, longitude, tags = [], zoom = 15) {
+    getMapUrl(latitude, longitude, tags = [], zoom = 10) {
         if (this.#apiKey === '') {
             console.log("No API key provided.");
             return "images/mapview.jpg";
@@ -126,8 +126,9 @@ function updateLocation() {
             taglonginput.setAttribute("value",longitude);
             //Map generierung
             var mapvar = new MapManager("INgE2DOxQWVpdxcCG5uywcOrMsY5J2Al"); //Schlüssel von der WEB API 
-            let URL = mapvar.getMapUrl(latitude,longitude, [], 15);   
-            document.getElementById("map").src = URL;
+            let URL = mapvar.getMapUrl(latitude,longitude, [], 10);   
+            let map = document.getElementById("map");
+            map.src = URL;
         });
 
     }
