@@ -102,35 +102,18 @@ class MapManager {
  * A function to retrieve the current location and update the page.
  * It is called once the page has been fully loaded.
  */
-
+class Location{
     
-function updateLocation(){
+static updateLocation(){
 
-
-    LocationHelper.findLocation(function (loc){
-
-        var latitudevalue = loc.latitude; 
-        var longitudevalue = loc.longitude;
-
-        let taglonginput = document.getElementById("taglonginput");
-        let taglatinput = document.getElementById("taglatinput");
-
-       taglonginput.value = longitudevalue;
-       taglatinput.value = latitudevalue;
-        
-       var mapObject = new MapManager('yaMPFXET2G0vG84h8G9MxGQBo2a35oVc');
-       var urlOfGeneratedMap = mapObject.getMapUrl(latitudevalue, longitudevalue,[], 10);
-       
-       let mapvar = document.getElementById("map");
-
-       mapvar.src = urlOfGeneratedMap;
-    });
-
-   
 }
 
-
+};
 // ... your code here ...
 
 // Wait for the page to fully load its DOM content, then call updateLocation
-document.addEventListener("DOMContentLoaded",() => {updateLocation();});   
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    alert("Please change the script 'geotagging.js'");
+});

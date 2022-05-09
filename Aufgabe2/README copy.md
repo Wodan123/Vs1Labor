@@ -4,6 +4,7 @@ In der zweiten Aufgabe soll die Position (d.h. die Koordinaten) des Geräts, auf
 
 Die Aufgabe vertieft die Programmierung von **Klassen** und **Callbacks** sowie **DOM Manipulation** mit JavaScript. Zudem wird die Nutzung einer externen **Web API** demonstriert.
 
+(Vorbereitung 2.1 Erledigt) 
 ## 2.1. Vorbereitung
 
 Aktualisieren sie zunächst das Github Repository [https://github.com/zirpins/vs1lab](https://github.com/zirpins/vs1lab). Wenn Sie den git-Tipps aus Aufgabe 1 gefolgt sind, gehen sie wie folgt vor (Beispiel für Linux/Mac):
@@ -37,7 +38,7 @@ Die HTML Datei aus Aufgabe 1 muss nun noch etwas angepasst werden. Fügen sie al
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="./javascripts/geotagging.js"></script>
 ```
-
+Erledigt 
 ### 2.1.3 Javascript testen
 
   Nun können sie testen, ob die Vorbereitung erfolgreich war. Öffnen Sie die Datei `Aufgabe2/gta_v2/public/index.html` im **Browser**. Es sollte nun ein Alert-Fenster erscheinen. Dadurch sehen sie, dass das zugehörige Skript ausgeführt wird.
@@ -48,12 +49,16 @@ Die HTML Datei aus Aufgabe 1 muss nun noch etwas angepasst werden. Fügen sie al
 
 Das JavaScript enthält zunächst einige Klassen mit Hilfsfunktionen. Die Klasse `LocationHelper` erleichtert die Verwendung der HTML5 Geolocation API zur Bestimmung der Position. Die Funktion `findLocation` nimmt als Parameter eine *Callback Funktion* an, die bei Erfolg mit einem instanziierten LocationHelper Objekt 'zurückgerufen' wird. Das LocationHelper Objekt enthält dann die aktuellen Koordinaten als private Properties, die mit einer 'get'-Methode ausgelesen werden können. Beim Aufruf der Funktion muss die Callback Funktion übergeben werden.
 
+
+------------------------------ Ab hier wichtig !!!! ----------------------------------------------
 Fügen sie eine Funktion `updateLocation` zum Skript hinzu, die folgendes tut:
 
 - Auslesen der Position mit `findLocation`
 - Im Erfolgsfall `latitude` und `longitude` Eingabefelder des Tagging-Formulars *und* des Discovery-Formulars (versteckte Eingabefelder) suchen und in deren `value`-Attribute Koordinaten schreiben.
 
 Rufen sie die neue `updateLocation`-Funktion nach dem Laden des Dokuments automatisch auf.
+----------------------------------------------------------------------------------------------------
+
 
 ### 2. Teilaufgabe: Position auf Karte darstellen
 
@@ -73,17 +78,17 @@ Zur Übersicht folgen noch mal alle Anforderungen in kompakter Form als Checklis
 
 ### 1. Teilaufgabe: Koordinaten bestimmen
 
-- [ ] Funktion `updateLocation` erstellen
-  - [ ] Nach dem Laden automatisch aufrufen
-  - [ ] Auslesen der Position mit `findLocation`
-  - [ ] Koordinaten in die Formulare eintragen
-    - [ ] `latitude` und `longitude` Felder
-    - [ ] Koordinaten in `value`-Attribute schreiben
-    - [ ] Auch versteckte Eingabefelder berücksichtigen
+- [X] Funktion `updateLocation` erstellen
+  - [X] Nach dem Laden automatisch aufrufen
+  - [X] Auslesen der Position mit `findLocation`
+  - [X] Koordinaten in die Formulare eintragen
+    - [X] `latitude` und `longitude` Felder
+    - [X] Koordinaten in `value`-Attribute schreiben
+    - [X] Auch versteckte Eingabefelder berücksichtigen
 
 ### 2. Teilaufgabe: Karte darstellen
 
-- [ ] MapQuest API-Schlüssel besorgen und eintragen
-- [ ] `updateLocation`-Funktion ergänzen
-  - [ ] Funktion `getMapUrl` aufrufen
-  - [ ] URL im `src`-Attribut des Image Elements eintragen
+- [X] MapQuest API-Schlüssel besorgen und eintragen
+- [X] `updateLocation`-Funktion ergänzen
+  - [X] Funktion `getMapUrl` aufrufen
+  - [X] URL im `src`-Attribut des Image Elements eintragen
