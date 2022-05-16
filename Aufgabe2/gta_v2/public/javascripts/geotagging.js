@@ -102,42 +102,48 @@ class MapManager {
  * A function to retrieve the current location and update the page.
  * It is called once the page has been fully loaded.
  */
-
-    
-function updateLocation(){
+// ... your code here ...
 
 
-    LocationHelper.findLocation(function (loc){
+function updateLocation() {
+
+    try{
         
-        //Koordinaten aus dem Locationhelper in neuen Variablen speichern
-        var latitudevalue = loc.latitude; 
-        var longitudevalue = loc.longitude;
+        LocationHelper.findLocation(function(loc) {
+            //Holen uns die Koordinaten ausm Locationhelper
+            var longitude = loc.longitude;
+            var latitude = loc.latitude;
+            //Selecten die richtigen Elemente ausm Discovery-HTML
+            let disclatinginput = document.getElementById("disclatinput");
+            let disclonginput = document.getElementById("disclonginput");
+            //Selecten die richtigen Elemente ausm Tagging-HTML
+            let taglatinginput = document.getElementById("taglatinput");
+            let taglonginput = document.getElementById("taglonginput");
+            //Die Koordinaten in die Inputs schreiben
+            disclatinginput.setAttribute("value",latitude);
+            disclonginput.setAttribute("value",longitude);
+            taglatinginput.setAttribute("value",latitude);
+            taglonginput.setAttribute("value",longitude);
+            //Map generierung
+            var mapvar = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");            //Schlüssel von der WEB API 
+            let URL = mapvar.getMapUrl(latitude,longitude, [], 10);   
+            let map = document.getElementById("map");
+            map.src = URL;
+        });
 
-        //Elemente aus dem HTML holen und in Variablen speichern
-        let taglonginput = document.getElementById("taglonginput");
-        let taglatinput = document.getElementById("taglatinput");
-        let discoverylonginput = document.getElementById("discoverylonginput");
-        let discoverylatinput = document.getElementById("discoverylatinput");
+    }
+    catch(error) {
+        alert("error");
+    }
 
-        //Elementen den richtigen Werten zuweisen
-        taglonginput.value = longitudevalue;
-        taglatinput.value = latitudevalue;
-        discoverylonginput.value =discoverylonginput;
-        discoverylatinput.value =discoverylatinput;
-        
-        //Karte erstellen und zuweisen
-        var mapObject = new MapManager('yaMPFXET2G0vG84h8G9MxGQBo2a35oVc');
-        var urlOfGeneratedMap = mapObject.getMapUrl(latitudevalue, longitudevalue,[], 10);
-        let mapvar = document.getElementById("map");
-        mapvar.src = urlOfGeneratedMap;
 
-    });
-
-   
 }
+
+// Wait for the page to fully load its DOM content, then call updateLocation
+document.addEventListener("DOMContentLoaded", () => {updateLocation();});
 
 
 // ... your code here ...
 
 // Wait for the page to fully load its DOM content, then call updateLocation
-document.addEventListener("DOMContentLoaded",() => {updateLocation();});   
+document.addEventListener("DOMContentLoaded", () => { updateLocation(); });   
