@@ -132,7 +132,7 @@ Zur Übersicht folgen noch mal alle Anforderungen in kompakter Form als Checklis
   - [ ] **Beispieldaten für GeoTag Objekte** einlesen (`./model/geotag-examples.js`)
 
 - [ ] **Server Konfiguration und Routen** fertigstellen
-  - [ ] **Statische Dateien** bereitstellen (`./app.js`)
+  - [ X ] **Statische Dateien** bereitstellen (`./app.js`)
   - [ ] Route `/tagging` zur **GeoTags Speicherung** erstellen. (`./routes/index.js`)
   - [ ] Route `/discovery` zur **GeoTag Abfrage** erstellen. (`./routes/index.js`)
 
