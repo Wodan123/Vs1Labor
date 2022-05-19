@@ -21,7 +21,6 @@ const router = express.Router();
  */
 // eslint-disable-next-line no-unused-vars
 const GeoTag = require('../models/geotag');
-
 /**
  * The module "geotag-store" exports a class GeoTagStore. 
  * It provides an in-memory store for geotag objects.
@@ -30,7 +29,7 @@ const GeoTag = require('../models/geotag');
  */
 // eslint-disable-next-line no-unused-vars
 const GeoTagStore = require('../models/geotag-store');
-
+var GeoTagStoreObject = new GeoTagStore();
 /**
  * Route '/' for HTTP 'GET' requests.
  * (http://expressjs.com/de/4x/api.html#app.get.method)
@@ -62,8 +61,8 @@ router.get('/', (req, res) => {
 
 // TODO: ... your code here ...
 router.post('/tagging',(req, res)=> {
-  GeoTagStore.addGeotag(new Geotag(req.body.name, req.body.latitude, req.body.longitude, req.body.hashtag));
-  var allGeoT = GeoTagStore.getNearbyGeoTags();
+  GeoTagStoreObject.addGeoTag(req.body.latitude,req.body.longitude,req.body.tagname,req.body.hashtag);
+  var allGeoT = GeoTagStoreObject.getNearbyGeoTags();
   res.render('tagging', { taglist : allGeoT })
 })
 /**
