@@ -61,7 +61,11 @@ router.get('/', (req, res) => {
  */
 
 // TODO: ... your code here ...
-
+router.post('/tagging',(req, res)=> {
+  GeoTagStore.addGeotag(new Geotag(req.body.name, req.body.latitude, req.body.longitude, req.body.hashtag));
+  var allGeoT = GeoTagStore.getNearbyGeoTags();
+  res.render('tagging', { taglist : allGeoT })
+})
 /**
  * Route '/discovery' for HTTP 'POST' requests.
  * (http://expressjs.com/de/4x/api.html#app.post.method)
@@ -79,5 +83,9 @@ router.get('/', (req, res) => {
  */
 
 // TODO: ... your code here ...
+router.post('/discovery',(req, res)=> {
+  var allGeoT = GeoTagStore.searchNearbyGeoTags(req.body.searchbox);
+  res.render('discovery', { taglist : allGeoT })
+})
 
 module.exports = router;

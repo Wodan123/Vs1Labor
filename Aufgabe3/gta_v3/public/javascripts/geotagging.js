@@ -126,7 +126,7 @@ function updateLocation() {
             taglonginput.setAttribute("value",longitude);
             //Map generierung
             var mapvar = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");            //Schlüssel von der WEB API 
-            let URL = mapvar.getMapUrl(latitude,longitude, [], 10);   
+            let URL = mapvar.getMapUrl(latitude,longitude, [], 15);   
             let map = document.getElementById("map");
             map.src = URL;
         });
