@@ -63,7 +63,7 @@ router.get('/', (req, res) => {
 router.post('/tagging',(req, res)=> {
   GeoTagStoreObject.addGeoTag(req.body.latitude,req.body.longitude,req.body.tagname,req.body.hashtag);
   var allGeoT = GeoTagStoreObject.getNearbyGeoTags();
-  res.render('tagging', { taglist : allGeoT })
+  res.render('index.ejs', { taglist : allGeoT })
 })
 /**
  * Route '/discovery' for HTTP 'POST' requests.

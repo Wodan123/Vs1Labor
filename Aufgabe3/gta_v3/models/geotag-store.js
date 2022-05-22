@@ -1,5 +1,6 @@
 // File origin: VS1LAB A3
 
+const { json } = require("express");
 const GeoTag = require("./geotag");
 
 /**
@@ -34,6 +35,9 @@ class InMemoryGeoTagStore{
 
     addGeoTag() {
         this.#setOfGeotags.push(GeoTag);
+        this.#setOfGeotags.forEach(e => {
+            console.log(e);
+        });
     }
 
     removeGeoTag() {
