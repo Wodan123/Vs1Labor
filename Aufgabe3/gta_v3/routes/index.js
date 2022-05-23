@@ -42,9 +42,9 @@ var GeoTagStoreObject = new GeoTagStore();
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  // res.render('index', { taglist: [] })  
-  // zum testen 
-  res.render('index', { taglist: GeoTagExamples.tagList, latitude: latitudeval, longitude: longitudeval})
+  res.render('index', { taglist: [], latitudeval : req.body.latitude , longitudeval : req.body.longitude}) 
+  
+  //res.render('index', { taglist: GeoTagExamples.tagList, latitudeval : req.body.latitude , longitudeval : req.body.longitude})
 });
 
 /**
@@ -66,7 +66,9 @@ router.get('/', (req, res) => {
 router.post('/tagging',(req, res)=> {
   GeoTagStoreObject.addGeoTag(req.body.latitude,req.body.longitude,req.body.tagname,req.body.hashtag);
   var allGeoT = GeoTagStoreObject.getNearbyGeoTags();
-  res.render('tagging', { taglist : allGeoT })
+  res.render('index', { taglist : allGeoT ,
+    latitudeval: req.body.latitude,longitudeval: req.body.latitude
+  })
 })
 /**
  * Route '/discovery' for HTTP 'POST' requests.
@@ -87,7 +89,7 @@ router.post('/tagging',(req, res)=> {
 // TODO: ... your code here ...
 router.post('/discovery',(req, res)=> {
   var allGeoT = GeoTagStore.searchNearbyGeoTags(req.body.searchbox);
-  res.render('discovery', { taglist : allGeoT })
+  res.render('index', { taglist : allGeoT })
 })
 
 module.exports = router;
