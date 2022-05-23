@@ -44,7 +44,7 @@ var GeoTagStoreObject = new GeoTagStore();
 router.get('/', (req, res) => {
   // res.render('index', { taglist: [] })  
   // zum testen 
-  res.render('index', { taglist: GeoTagExamples.tagList })
+  res.render('index', { taglist: GeoTagExamples.tagList, latitude: latitudeval, longitude: longitudeval})
 });
 
 /**
