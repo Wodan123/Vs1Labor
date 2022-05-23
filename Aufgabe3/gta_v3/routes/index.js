@@ -21,6 +21,7 @@ const router = express.Router();
  */
 // eslint-disable-next-line no-unused-vars
 const GeoTag = require('../models/geotag');
+const GeoTagExamples = require('../models/geotag-examples');
 /**
  * The module "geotag-store" exports a class GeoTagStore. 
  * It provides an in-memory store for geotag objects.
@@ -41,7 +42,9 @@ var GeoTagStoreObject = new GeoTagStore();
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { taglist: [] })
+  // res.render('index', { taglist: [] })  
+  // zum testen 
+  res.render('index', { taglist: GeoTagExamples.tagList })
 });
 
 /**
