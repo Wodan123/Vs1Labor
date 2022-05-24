@@ -64,6 +64,7 @@ router.get('/', (req, res) => {
 
 // TODO: ... your code here ...
 router.post('/tagging',(req, res)=> {
+  var geoT = new GeoTag(req.body.latitude,req.body.longitude,req.body.tagname,req.body.hashtag);
   GeoTagStoreObject.addGeoTag(req.body.latitude,req.body.longitude,req.body.tagname,req.body.hashtag);
   var allGeoT = GeoTagStoreObject.getNearbyGeoTags();
   res.render('index', { taglist : allGeoT ,
