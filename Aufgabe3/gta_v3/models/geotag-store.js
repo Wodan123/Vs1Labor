@@ -37,6 +37,7 @@ class InMemoryGeoTagStore{
         this.#setOfGeotags.push(GeoTag);
         this.#setOfGeotags.forEach(e => {
             console.log(e);
+            console.log("hello");
         });
     }
 
