@@ -5,8 +5,6 @@
  * It's a template for exercise VS1lab/Aufgabe3
  * Complete all TODOs in the code documentation.
  */
- const cons1 = require('../models/geotag-store');
- const memory = new cons1();
 /**
  * Define module dependencies.
  */
@@ -65,11 +63,11 @@ router.get('/', (req, res) => {
 
 // TODO: ... your code here ...
 router.post('/tagging',(req, res)=> {
-  memory.addGeoTag(new GeoTag(req.body.latval, req.body.longval, req.body.tagnameinput, req.body.taghashtaginput));
-  let GeoTagStoreObject = memory.getNearbyGeoTags(req.body.latval, req.body.longval, 100);
+  GeoTagStoreObject.addGeoTag(new GeoTag(req.body.latval, req.body.longval, req.body.tagnameinput, req.body.taghashtaginput));
+  let xy = GeoTagStoreObject.getNearbyGeoTags(req.body.latval, req.body.longval, 100);
   console.log(req.body);
     res.render("index", { 
-      taglist: GeoTagStoreObject,
+      taglist: xy,
       latval: req.body.latval,
       longval: req.body.longval
     });   
