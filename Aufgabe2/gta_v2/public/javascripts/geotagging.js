@@ -81,7 +81,7 @@ class MapManager {
      * @param {number} zoom The map zoom, defaults to 10
      * @returns {string} URL of generated map
      */
-    getMapUrl(latitude, longitude, tags = [], zoom = 15) {
+    getMapUrl(latitude, longitude, tags = [], zoom = 10) {
         if (this.#apiKey === '') {
             console.log("No API key provided.");
             return "images/mapview.jpg";
@@ -125,9 +125,10 @@ function updateLocation() {
             taglatinginput.setAttribute("value",latitude);
             taglonginput.setAttribute("value",longitude);
             //Map generierung
-            var mapvar = new MapManager("INgE2DOxQWVpdxcCG5uywcOrMsY5J2Al"); //Schlüssel von der WEB API 
-            let URL = mapvar.getMapUrl(latitude,longitude, [], 15);   
-            document.getElementById("map").src = URL;
+            var mapvar = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");            //Schlüssel von der WEB API 
+            let URL = mapvar.getMapUrl(latitude,longitude, [], 10);   
+            let map = document.getElementById("map");
+            map.src = URL;
         });
 
     }
@@ -140,3 +141,9 @@ function updateLocation() {
 
 // Wait for the page to fully load its DOM content, then call updateLocation
 document.addEventListener("DOMContentLoaded", () => {updateLocation();});
+
+
+// ... your code here ...
+
+// Wait for the page to fully load its DOM content, then call updateLocation
+document.addEventListener("DOMContentLoaded", () => { updateLocation(); });   
