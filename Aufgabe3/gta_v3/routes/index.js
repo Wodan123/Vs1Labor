@@ -41,7 +41,7 @@ var GeoTagStoreObject = new GeoTagStore();
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { taglist: [],  userLat: "//", userLong: "//"}) 
+  res.render('index', { taglist: [],  latval: "//", longval: "//"}) 
   
   //res.render('index', { taglist: GeoTagExamples.tagList, latitudeval : req.body.latitude , longitudeval : req.body.longitude})
 });
