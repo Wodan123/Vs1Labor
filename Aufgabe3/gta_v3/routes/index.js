@@ -41,9 +41,11 @@ var GeoTagStoreObject = new GeoTagStore();
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { taglist: [],  latval: "//", longval: "//"}) 
+  //res.render('index', { taglist: [],  latval: "//", longval: "//"}) 
   
-  //res.render('index', { taglist: GeoTagExamples.tagList, latitudeval : req.body.latitude , longitudeval : req.body.longitude})
+  res.render('index', { taglist: GeoTagExamples.tagList, 
+    latvalue : req.body.latval , 
+    longvalue : req.body.longval})
 });
 
 /**
@@ -68,8 +70,8 @@ router.post('/tagging',(req, res)=> {
   console.log(req.body);
     res.render("index", { 
       taglist: xy,
-      latval: req.body.latval,
-      longval: req.body.longval
+      latvalue: req.body.latval,
+      longvalue: req.body.longval
     });   
 })
 /**

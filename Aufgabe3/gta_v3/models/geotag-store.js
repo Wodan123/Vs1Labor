@@ -49,10 +49,10 @@ class InMemoryGeoTagStore{
         }
     }
 
-    getNearbyGeoTags() {
-        var latitude = GeoTag.latitude;
-        var longitude = GeoTag.longitude;
-        var radius = 0.500;
+    getNearbyGeoTags(latval, longval, x) {
+        var latitude = latval;
+        var longitude = longval;
+        var radius = x;
         
         for(var i = 0; i < this.#setOfGeotags.length; i++) {
 

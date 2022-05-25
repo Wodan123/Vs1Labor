@@ -30,10 +30,10 @@
                     <legend>Add a new GeoTag</legend>
                
                         <label class="item">Latitude: </label>
-                        <input type="text" class="item" id="taglatinput" name="latval" placeholder="//e.g. 49.0124" value='<%= latval %>' readonly>
+                        <input type="text" class="item" id="taglatinput" name="latval" placeholder="//e.g. 49.0124" value='<%= latvalue %>' readonly>
               
                         <label class="item">Longitude: </label>
-                        <input type="text" class="item" id="taglonginput" name="longval" placeholder="//e.g. 42.013" value='<%= longval %>' readonly>
+                        <input type="text" class="item" id="taglonginput" name="longval" placeholder="//e.g. 42.013" value='<%= longvalue %>' readonly>
               
                         <label class="item">Name: </label>
                         <input type="text" class="item" id="tagnameinput" name="tagname" placeholder="e.g. Central Berlin" required minlength="1" maxlength="10">
@@ -83,9 +83,9 @@
             </div>
             <table hidden>
                 <label class="item" hidden>Latitude: </label>
-                <input type="text" class="item" id="disclatinput" name="hiddenlatval" value="<%= latval %>" placeholder="//e.g. 49.0124" disabled hidden>
+                <input type="text" class="item" id="disclatinput" name="hiddenlatval" value="<%= latvalue %>" placeholder="//e.g. 49.0124" disabled hidden>
                 <label class="item" hidden>Longitude: </label>
-                <input type="text" class="item" id="disclonginput" name="hiddenlongval" value="<%= longval %>" placeholder="//e.g. 42.013" disabled hidden> 
+                <input type="text" class="item" id="disclonginput" name="hiddenlongval" value="<%= longvalue %>" placeholder="//e.g. 42.013" disabled hidden> 
             </table>
         </section>
 
