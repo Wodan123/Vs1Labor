@@ -31,7 +31,18 @@ class InMemoryGeoTagStore{
     // TODO: ... your code here ...
     
     #setOfGeotags = [];
-    addGeoTag() {
+    examples(){
+        let tagList = GeoTagExamples.tagList;
+        for (let i = 0; i < (GeoTagExamples.tagList).length; i++) {
+                this.addGeoTag(new GeoTag(tagList[i][0], tagList[i][1], tagList[i][2], tagList[i][3]));
+        }
+    }
+
+    getGeoTag(){
+        return this.#setOfGeotags;
+    }
+
+    addGeoTag(GeoTag) {
         this.#setOfGeotags.push(GeoTag);
     }
 

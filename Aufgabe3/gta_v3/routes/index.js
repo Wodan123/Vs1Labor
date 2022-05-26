@@ -30,6 +30,8 @@ const GeoTagExamples = require('../models/geotag-examples');
 // eslint-disable-next-line no-unused-vars
 const GeoTagStore = require('../models/geotag-store');
 var GeoTagStoreObject = new GeoTagStore();
+
+GeoTagStoreObject.examples();
 /**
  * Route '/' for HTTP 'GET' requests.
  * (http://expressjs.com/de/4x/api.html#app.get.method)
@@ -42,7 +44,7 @@ var GeoTagStoreObject = new GeoTagStore();
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
   var json = JSON.stringify(req.body.image);
-  res.render('index', { taglist: [] , latvalue: "//", longvalue: "//", tags:json})
+  res.render('index', { taglist: GeoTagStoreObject.setOfGeotags , latvalue: "//", longvalue: "//", tags:JSON.stringify(GeoTagStoreObject.setOfGeotags)})
 });
 
 /**
