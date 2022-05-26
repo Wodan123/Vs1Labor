@@ -1,7 +1,7 @@
 // File origin: VS1LAB A3
 
-const { json } = require("express");
 const GeoTag = require("./geotag");
+const GeoTagExamples = require("./geotag-examples");
 
 /**
  * This script is a template for exercise VS1lab/Aufgabe3
@@ -30,30 +30,25 @@ class InMemoryGeoTagStore{
 
     // TODO: ... your code here ...
     
-    #setOfGeotags = []; //Empty set of geotags
-    #getNearGT = [];
-
+    #setOfGeotags = [];
     addGeoTag() {
         this.#setOfGeotags.push(GeoTag);
-        this.#setOfGeotags.forEach(e => {
-            console.log(e);
-            console.log("hello");
-        });
     }
 
-    removeGeoTag() {
-        for(var i = 0; i < setOfGeoTags.length; i++) {
-            if(this.#setOfGeotags[i].tagname === GeoTag.tagname) {
-                this.#setOfGeotags[i].pop();
+    removeGeoTag(name) {
+        for(let i = 0; i < this.setOfGeoTags.length; i++) {
+            if(name === this.#setOfGeotags[i].name) {
+                this.#setOfGeotags.splice(i);
+                break;
             }
         }
     }
 
-    getNearbyGeoTags(latval, longval, x) {
-        var latitude = latval;
-        var longitude = longval;
-        var radius = x;
-        
+    getNearbyGeoTags(tagLatitude, tagLongitude) {
+        var latitude = tagLatitude;
+        var longitude= tagLongitude;
+        var radius = 0.500;
+        var getNearGT= [];
         for(var i = 0; i < this.#setOfGeotags.length; i++) {
 
         //Fkt. siehe https://www.vectorsoft.de/blog/2011/11/geokodierung-mittels-webservices-und-entfernungsberechnung/
@@ -64,26 +59,19 @@ class InMemoryGeoTagStore{
         var sqrt = Math.sqrt(dx * dx + dy * dy); //Abstand in km
 
             if(sqrt < radius) {
-                this.#getNearGT.push(this.#setOfGeotags[i]);
+                getNearGT.push(this.#setOfGeotags[i]);
             }
         }
-        return this.#getNearGT;
+        return this.getNearGT;
     }
 
-    searchNearbyGeoTags(name, hashtag) {
-        var latitude = GeoTag.latitude;
-        var longitude = GeoTag.longitude;
-        var tagname = GeoTag.tagname;
-        var hashtag = GeoTag.hashtag;
-        ret = this.getNearbyGeoTags(this.latitude, this.longitude); // Array wo die naheliegenden GT gespeichert werden, aber nur wo der Name bzw. der Hashtag mit der Suche matched
-        
-        for(var i = 0; i < this.ret.length; i++) {
-            if(!((this.tagname === this.ret[i].tagname) || (this.hashtag === this.ret[i].hashtag))) {
-                ret[i].pop(this.ret[i]); // löscht die Werte aus dem Array wo der Name und Hashtag nicht passt, (umgekehrte Logik)
-                                        // so werden am Ende nur die GT zurückgegeben im Array, die Proximity und (Hashtag od. Name) haben.
-            }   
-        }
-    return ret;
+    searchNearbyGeoTags(searching) {
+        var array = [];
+        this.#setOfGeotags.forEach(function (current) {
+            if (current.name.includes(searching) || current.hashtag.includes(searching)) array.push(current); 
+        });
+        console.log(array);
+        return array;
     }
 }
 

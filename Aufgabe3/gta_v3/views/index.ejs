@@ -30,16 +30,16 @@
                     <legend>Add a new GeoTag</legend>
                
                         <label class="item">Latitude: </label>
-                        <input type="text" class="item" id="taglatinput" name="latval" placeholder="//e.g. 49.0124" value='<%= latvalue %>' readonly>
+                        <input type="text" class="item" id="taglatinput" name="tagLatitude" placeholder="//e.g. 49.0124" value='<%= latvalue %>'>
               
                         <label class="item">Longitude: </label>
-                        <input type="text" class="item" id="taglonginput" name="longval" placeholder="//e.g. 42.013" value='<%= longvalue %>' readonly>
+                        <input type="text" class="item" id="taglonginput" name="tagLongitude" placeholder="//e.g. 42.013" value='<%= longvalue %>'>
               
                         <label class="item">Name: </label>
                         <input type="text" class="item" id="tagnameinput" name="tagname" placeholder="e.g. Central Berlin" required minlength="1" maxlength="10">
                
                         <label class="item">Hashtag: </label>
-                        <input type="text" class="item" id="taghashtaginput" name="hashtag" placeholder="e.g. #ber" pattern="#[A-Za-z]+" required minlength="2" maxlength="10">
+                        <input type="text" class="item" id="taghashtaginput" name="taghashtag" placeholder="e.g. #ber" pattern="#[A-Za-z]+" required minlength="2" maxlength="10">
                    
                         <input class="tagging_item" type="submit" id="tagbutton" value="Add Tag">
 
@@ -60,7 +60,7 @@
                     <legend>Search</legend>
                         <label class="item">Search term or keywords: </label>
                         <input type="text" class="item" id="discoveryinput" name="searchbox" placeholder="e.g. Berlin">
-                        <button class="item" id="discoverybutton" disabled>Search</button>
+                        <button class="item" id="discoverybutton" name="search">Search</button>
                         
                 </fieldset>
                 <!-- ... your code here ... -->
@@ -71,21 +71,21 @@
                 <div class="discovery__taglist">
                     <ul class="discovery__results" id="discoveryResults">
                         <% if (taglist !== undefined) taglist.forEach(function(gtag) { %>
-                            <li><%= gtag.name %> ( <%= gtag.latitude %>,<%= gtag.longitude %>) <%= gtag.hashtag %> </li>
+                            <li><%= gtag.name %> , <%= gtag.latitude %>,<%= gtag.longitude %>, <%= gtag.hashtag %> </li>
                         <% }); %>
                     </ul>
                 </div>
 
                 <div class="discovery__map" id="mapdiv">
-                    <img src="./images/mapview.jpg" alt="a map with locations" id="map"/>
+                    <img src="./images/mapview.jpg" alt="a map with locations" id="map" data-tags='<%= JSON.stringify(taglist) %>'/>
                     <span id="resultMap">Result map</span>
                 </div>
             </div>
             <table hidden>
                 <label class="item" hidden>Latitude: </label>
-                <input type="text" class="item" id="disclatinput" name="hiddenlatval" value="<%= latvalue %>" placeholder="//e.g. 49.0124" disabled hidden>
+                <input type="text" class="item" id="disclatinput" name="hiddenLatitude" value="<%= latvalue %>" placeholder="//e.g. 49.0124" disabled hidden>
                 <label class="item" hidden>Longitude: </label>
-                <input type="text" class="item" id="disclonginput" name="hiddenlongval" value="<%= longvalue %>" placeholder="//e.g. 42.013" disabled hidden> 
+                <input type="text" class="item" id="disclonginput" name="hiddenLongitude" value="<%= longvalue %>" placeholder="//e.g. 42.013" disabled hidden> 
             </table>
         </section>
 
@@ -96,8 +96,10 @@
         <span id="footerspan">(c) 2021/22 HKA_IWI_VSYS</span>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./javascripts/location-helper.js"></script>
+    <script src="./javascripts/map-manager.js"></script>
     <script src="./javascripts/geotagging.js"></script>
+    
     
 </body>
 
