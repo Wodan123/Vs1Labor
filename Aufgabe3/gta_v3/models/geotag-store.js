@@ -56,49 +56,28 @@ class InMemoryGeoTagStore{
     }
 
     getNearbyGeoTags(tagLatitude, tagLongitude) {
-        var latitude = tagLatitude;
-        var longitude= tagLongitude;
-        //var radius = 500;
-        var getNearGT= [];
-        /*for(var i = 0; i < this.#setOfGeotags.length; i++) {
-
-        //Fkt. siehe https://www.vectorsoft.de/blog/2011/11/geokodierung-mittels-webservices-und-entfernungsberechnung/
-
-        var lat = this.#setOfGeotags[i].latitude + latitude / 2.0 * 0.01745;
-        var dx = 111.3 * Math.cos(lat) * Math.abs(longitude - this.#setOfGeotags[i].longitude);        
-        var dy = 111.3 * Math.abs(latitude - this.#setOfGeotags[i].latitude);
-        var sqrt = Math.sqrt(dx * dx + dy * dy); //Abstand in km
-
-            if(sqrt < radius) {
-                getNearGT.push(this.#setOfGeotags[i]);
-            }
-        }
-        return this.getNearGT;
-        */
-        var radius = 100;
-        var x = latitude;
-        var y = longitude;
-        this.#setOfGeotags.forEach(function (current) {
-            var curX = current.latitude-x;
-            var curY = current.longitude-y;
-            var sqrX = curX*curX ;
-            var sqrY =  curY*curY;
-            var sqrR = radius * radius;
-            if((-0.01 <= curX <=0.02)&&(-0.01 <= curY <=0.02)) //im Bereich Zentrum +- radius
-            {
-                getNearGT.push(current);
-            }
-        });
-        return getNearGT;
+       
     }
 
     searchNearbyGeoTags(searching) {
-        var array = [];
-        this.#setOfGeotags.forEach(function (current) {
-            if (current.name.includes(searching) || current.hashtag.includes(searching)) array.push(current); 
-        });
-        console.log(array);
-        return array;
+        let geoTagMatching;
+        let nearbyGeoTags = [];
+        let stringMatch;
+        let geoTagName;
+
+        let regExp = new RegExp(searching);
+
+        for (let i = 0; i < this.#setOfGeotags.length; i++) {
+            geoTagName = this.#setOfGeotags[i].name;
+            stringMatch = geoTagName.match(regExp);
+
+            if(stringMatch != null) {
+                geoTagMatching = this.#setOfGeotags[i];
+                nearbyGeoTags.push(geoTagMatching);
+            }
+        }
+
+        return nearbyGeoTags;
     }
 }
 

@@ -43,8 +43,7 @@ GeoTagStoreObject.examples();
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  var json = JSON.stringify(req.body.image);
-  res.render('index', { taglist: GeoTagStoreObject.setOfGeotags , latvalue: "//", longvalue: "//", tags:JSON.stringify(GeoTagStoreObject.setOfGeotags)})
+  res.render('index', { taglist: GeoTagStoreObject.setOfGeotags , latvalue: "", longvalue: "", mapGeoTagList: JSON.stringify(GeoTagStoreObject.setOfGeotags)})
 });
 
 /**
@@ -65,12 +64,13 @@ router.get('/', (req, res) => {
 // TODO: ... your code here ...
 router.post('/tagging',(req, res)=> {
   GeoTagStoreObject.addGeoTag(new GeoTag(req.body.tagname, req.body.tagLatitude, req.body.tagLongitude, req.body.taghashtag));
-  let xy = GeoTagStoreObject.getNearbyGeoTags(req.body.tagLatitude, req.body.tagLongitude);
+  let nearbyGT = GeoTagStoreObject.getNearbyGeoTags(req.body.tagLatitude, req.body.tagLongitude);
   console.log(req.body);
     res.render("index", { 
-      taglist: xy,
+      taglist: nearbyGT,
       latvalue: req.body.tagLatitude,
-      longvalue: req.body.tagLongitude
+      longvalue: req.body.tagLongitude, 
+      mapGeoTagList: JSON.stringify(nearbyGT)
     });   
 })
 /**
@@ -91,11 +91,13 @@ router.post('/tagging',(req, res)=> {
 
 // TODO: ... your code here ...
 router.post('/discovery',(req, res)=> {
-  var searching = GeoTagStoreObject.searchNearbyGeoTags(req.body.search);
+  let searchTerm = req.body.search;
+  let searching = GeoTagStoreObject.searchNearbyGeoTags(searchTerm);
   res.render("index", { 
     taglist: searching,
     latvalue: req.body.hiddenLatitude,
     longvalue: req.body.hiddenLongitude,
+    mapGeoTagList: JSON.stringify(searching)
   });   
 });
 
