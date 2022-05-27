@@ -30,10 +30,10 @@
                     <legend>Add a new GeoTag</legend>
                
                         <label class="item">Latitude: </label>
-                        <input type="text" class="item" id="taglatinput" name="tagLatitude" value='<%= latvalue %>' readonly />
+                        <input type="text" class="item" id="taglatinput" name="tagLatitude" value='<%= latvalue %>' />
               
                         <label class="item">Longitude: </label>
-                        <input type="text" class="item" id="taglonginput" name="tagLongitude" value='<%= longvalue %>'readonly />
+                        <input type="text" class="item" id="taglonginput" name="tagLongitude" value='<%= longvalue %>'/>
               
                         <label class="item">Name: </label>
                         <input type="text" class="item" id="tagnameinput" name="tagname" placeholder="e.g. Central Berlin" required minlength="1" maxlength="10">
@@ -60,7 +60,7 @@
                     <legend>Search</legend>
                         <label class="item">Search term or keywords: </label>
                         <input type="text" class="item" id="discoveryinput" name="searchbox" placeholder="e.g. Berlin">
-                        <button class="item" id="discoverybutton" name="search">Search</button>
+                        <button class="item" id="discoverybutton">Search</button>
                         
                 </fieldset>
                 <!-- ... your code here ... -->

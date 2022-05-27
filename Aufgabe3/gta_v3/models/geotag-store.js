@@ -80,18 +80,19 @@ class InMemoryGeoTagStore{
     searchNearbyGeoTags(searching) {
         let geoTagMatching;
         let nearbyGeoTags = [];
-        let stringMatch;
+        let geoTagHash;
         let geoTagName;
-
-        let regExp = new RegExp(searching);
 
         for (let i = 0; i < this.#setOfGeotags.length; i++) {
             geoTagName = this.#setOfGeotags[i].name;
-            stringMatch = geoTagName.match(regExp);
+            geoTagHash = this.#setOfGeotags[i].hashtag;
 
-            if(stringMatch != null) {
+            if(geoTagName.includes(searching) || geoTagHash.includes(searching)) {
+                console.log(geoTagName);
+                console.log(searching);
                 geoTagMatching = this.#setOfGeotags[i];
                 nearbyGeoTags.push(geoTagMatching);
+                console.log("Gefunden!!!!");
             }
         }
 

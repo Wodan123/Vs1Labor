@@ -21,7 +21,7 @@ function updateLocation() {
 function mapUpdate(latitude, longitude) {
     let nearGeoTaglist = JSON.parse(document.getElementById("map").getAttribute("data-tags"));
     let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
-    let mapUrl = mapManager.getMapUrl(latitude, longitude, nearGeoTaglist, 15);
+    let mapUrl = mapManager.getMapUrl(latitude, longitude, nearGeoTaglist, 11);
     document.getElementById("map").setAttribute("src", mapUrl);
 }
 document.addEventListener("DOMContentLoaded", updateLocation(), true);

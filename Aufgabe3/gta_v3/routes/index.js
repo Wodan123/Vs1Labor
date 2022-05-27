@@ -91,7 +91,7 @@ router.post('/tagging',(req, res)=> {
 
 // TODO: ... your code here ...
 router.post('/discovery',(req, res)=> {
-  let searchTerm = req.body.search;
+  let searchTerm = req.body.searchbox;
   let searching = GeoTagStoreObject.searchNearbyGeoTags(searchTerm);
   res.render("index", { 
     taglist: searching,
