@@ -41,7 +41,7 @@
                         <label class="item">Hashtag: </label>
                         <input type="text" class="item" id="taghashtaginput" name="taghashtag" placeholder="e.g. #ber" pattern="#[A-Za-z]+" required minlength="2" maxlength="10">
                    
-                        <input class="tagging_item" type="submit" id="tagbutton" value="Add Tag">
+                        <input class="item" type="submit" id="tagbutton" value="Add Tag">
 
                 </fieldset>
                 <!-- ... your code here ... -->
@@ -71,7 +71,7 @@
                 <div class="discovery__taglist">
                     <ul class="discovery__results" id="discoveryResults">
                         <% if (taglist !== undefined) taglist.forEach(function(gtag) { %>
-                            <li><%= gtag.name %> ( <%= gtag.latitude %>,<%= gtag.longitude %>) <%= gtag.hashtag %> </li>
+                            <li class="listitem"><%= gtag.name %> ( <%= gtag.latitude %>,<%= gtag.longitude %>) <%= gtag.hashtag %> </li>
                         <% }); %>
                     </ul>
                 </div>

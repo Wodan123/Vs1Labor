@@ -63,22 +63,22 @@ class InMemoryGeoTagStore{
         var res = [];
         var x = tagLatitude;
         var y = tagLongitude;
-        this.#setOfGeotags.forEach(function (current) {
-            var curX = current.latitude-x;
-            var curY = current.longitude-y;
-            var sqrX = curX*curX ;
-            var sqrY = curY*curY;
-            var sqrR = radius * radius;
-            if((sqrX+sqrY)<=sqrR) //im Bereich Zentrum +- radius
+        this.#setOfGeotags.forEach(function (cur) {
+            var curX = cur.latitude-x;
+            var curY = cur.longitude-y;
+            var squareX = Math.pow(curX,2);
+            var squareY = Math.pow(curY,2);
+            var squareR = Math.pow(radius,2);
+            if((squareX+squareY)<=squareR) //im Bereich Zentrum +- radius
             {
-                res.push(current);
+                res.push(cur);
             }
         });
         return res;
     }
 
     searchNearbyGeoTags(searching) {
-        let geoTagMatching;
+        let match;
         let nearbyGeoTags = [];
         let geoTagHash;
         let geoTagName;
@@ -90,8 +90,8 @@ class InMemoryGeoTagStore{
             if(geoTagName.includes(searching) || geoTagHash.includes(searching)) {
                 console.log(geoTagName);
                 console.log(searching);
-                geoTagMatching = this.#setOfGeotags[i];
-                nearbyGeoTags.push(geoTagMatching);
+                match = this.#setOfGeotags[i];
+                nearbyGeoTags.push(match);
                 console.log("Gefunden!!!!");
             }
         }
