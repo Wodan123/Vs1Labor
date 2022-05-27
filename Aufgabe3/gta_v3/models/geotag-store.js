@@ -58,9 +58,9 @@ class InMemoryGeoTagStore{
     getNearbyGeoTags(tagLatitude, tagLongitude) {
         var latitude = tagLatitude;
         var longitude= tagLongitude;
-        var radius = 0.500;
+        //var radius = 500;
         var getNearGT= [];
-        for(var i = 0; i < this.#setOfGeotags.length; i++) {
+        /*for(var i = 0; i < this.#setOfGeotags.length; i++) {
 
         //Fkt. siehe https://www.vectorsoft.de/blog/2011/11/geokodierung-mittels-webservices-und-entfernungsberechnung/
 
@@ -74,6 +74,22 @@ class InMemoryGeoTagStore{
             }
         }
         return this.getNearGT;
+        */
+        var radius = 100;
+        var x = latitude;
+        var y = longitude;
+        this.#setOfGeotags.forEach(function (current) {
+            var curX = current.latitude-x;
+            var curY = current.longitude-y;
+            var sqrX = curX*curX ;
+            var sqrY =  curY*curY;
+            var sqrR = radius * radius;
+            if((-0.01 <= curX <=0.02)&&(-0.01 <= curY <=0.02)) //im Bereich Zentrum +- radius
+            {
+                getNearGT.push(current);
+            }
+        });
+        return getNearGT;
     }
 
     searchNearbyGeoTags(searching) {
