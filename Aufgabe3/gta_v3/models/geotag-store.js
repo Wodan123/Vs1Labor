@@ -88,11 +88,8 @@ class InMemoryGeoTagStore{
             geoTagHash = this.#setOfGeotags[i].hashtag;
 
             if(geoTagName.includes(searching) || geoTagHash.includes(searching)) {
-                console.log(geoTagName);
-                console.log(searching);
                 match = this.#setOfGeotags[i];
                 nearbyGeoTags.push(match);
-                console.log("Gefunden!!!!");
             }
         }
 

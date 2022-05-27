@@ -31,6 +31,7 @@ const GeoTagExamples = require('../models/geotag-examples');
 const GeoTagStore = require('../models/geotag-store');
 var GeoTagStoreObject = new GeoTagStore();
 
+GeoTagStoreObject.examples();
 
 /**
  * Route '/' for HTTP 'GET' requests.
@@ -43,7 +44,6 @@ var GeoTagStoreObject = new GeoTagStore();
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  GeoTagStoreObject.examples();
   res.render('index', { taglist: GeoTagStoreObject.getArray() , latvalue: "", longvalue: "", mapGeoTagList: JSON.stringify(GeoTagStoreObject.getArray()) });
 });
 
