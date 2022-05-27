@@ -1,7 +1,4 @@
-
 console.log("The geoTagging script is going to start...");
-
-
 
 function updateLocation() {
 

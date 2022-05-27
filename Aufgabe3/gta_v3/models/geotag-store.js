@@ -37,6 +37,9 @@ class InMemoryGeoTagStore{
                 this.addGeoTag(new GeoTag(tagList[i][0], tagList[i][1], tagList[i][2], tagList[i][3]));
         }
     }
+    getArray(){
+        return this.#setOfGeotags;
+    }
 
     getGeoTag(){
         return this.#setOfGeotags;
@@ -56,7 +59,22 @@ class InMemoryGeoTagStore{
     }
 
     getNearbyGeoTags(tagLatitude, tagLongitude) {
-       
+        var radius = 100;
+        var res = [];
+        var x = tagLatitude;
+        var y = tagLongitude;
+        this.#setOfGeotags.forEach(function (current) {
+            var curX = current.latitude-x;
+            var curY = current.longitude-y;
+            var sqrX = curX*curX ;
+            var sqrY = curY*curY;
+            var sqrR = radius * radius;
+            if((sqrX+sqrY)<=sqrR) //im Bereich Zentrum +- radius
+            {
+                res.push(current);
+            }
+        });
+        return res;
     }
 
     searchNearbyGeoTags(searching) {

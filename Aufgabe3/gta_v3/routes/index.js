@@ -43,7 +43,7 @@ GeoTagStoreObject.examples();
 
 // TODO: extend the following route example if necessary
 router.get('/', (req, res) => {
-  res.render('index', { taglist: GeoTagStoreObject.setOfGeotags , latvalue: "", longvalue: "", mapGeoTagList: JSON.stringify(GeoTagStoreObject.setOfGeotags)})
+  res.render('index', { taglist: GeoTagStoreObject.getArray() , latvalue: "", longvalue: "", mapGeoTagList: JSON.stringify(GeoTagStoreObject.getArray()) });
 });
 
 /**
