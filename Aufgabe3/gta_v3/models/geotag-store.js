@@ -41,10 +41,6 @@ class InMemoryGeoTagStore{
         return this.#setOfGeotags;
     }
 
-    getGeoTag(){
-        return this.#setOfGeotags;
-    }
-
     addGeoTag(GeoTag) {
         this.#setOfGeotags.push(GeoTag);
     }
@@ -59,7 +55,7 @@ class InMemoryGeoTagStore{
     }
 
     getNearbyGeoTags(tagLatitude, tagLongitude) {
-        var radius = 100;
+        var radius = 1;
         var res = [];
         var x = tagLatitude;
         var y = tagLongitude;

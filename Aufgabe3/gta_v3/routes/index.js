@@ -31,7 +31,7 @@ const GeoTagExamples = require('../models/geotag-examples');
 const GeoTagStore = require('../models/geotag-store');
 var GeoTagStoreObject = new GeoTagStore();
 
-GeoTagStoreObject.examples();
+GeoTagStoreObject.examples(); //Lade die GeoTag-Beispiele in unser Array
 
 /**
  * Route '/' for HTTP 'GET' requests.
