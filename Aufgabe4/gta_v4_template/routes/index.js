@@ -42,7 +42,7 @@ GeoTagStoreObject.examples(); //Lade die Geotag-Beispiele in unser Array
  */
 
 router.get('/', (req, res) => {
-  res.render('index', { taglist: [] })
+  res.render('index', { taglist: [], latvalue : 0.0, longvalue : 0.0, mapGeoTagList : null })
 });
 
 /**
@@ -115,8 +115,36 @@ router.post('/discovery',(req, res)=> {
  */
 
 // TODO: ... your code here ...
-router.get('api/geotags', (req, res) => {
+router.get('/api/geotags', (req, res) => {
   
+  let searchterm = req.query.searchterm;
+  let latitude = req.query.latitude;
+  let longitude = req.query.longitude;
+
+  console.log(`Here is your searchterm: ${searchterm},${latitude},${longitude}`);
+  
+  /*First search, when only searchterm is avalaible */
+  let searchingWithTerm = GeoTagStoreObject.searchGeoTags(searchterm);
+
+  let searchingWithCoords = [];
+  /*Second Search, if latitude/longitude are available, and what to do if they are not*/
+  if(searchingWithTerm.length === 0) {
+    searchingWithCoords = GeoTagStoreObject.getNearbyGeoTags(latitude, longitude);
+  } else {
+    if(latitude == null || longitude == null) {
+      searchingWithCoords = searchingWithTerm;
+    }
+    else {
+      searchingWithCoords = GeoTagStoreObject.getNearbyGeoTags(latitude, longitude, searchingWithTerm);
+    }
+  }
+
+  res.render("/index", {
+    taglist : searchingWithCoords,
+    mapGeoTagList: JSON.stringify(searchingWithCoords)
+  });
+
+  console.log(req.body);
 });
 
 

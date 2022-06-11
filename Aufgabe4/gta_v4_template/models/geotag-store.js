@@ -72,24 +72,74 @@ class InMemoryGeoTagStore{
         });
         return res;
     }
-
-    searchNearbyGeoTags(searching) {
-        let match;
+    //Methodenüberladung siehe index.js
+    getNearbyGeoTags(tagLatitude, tagLongitude, geotagArray) {
+        var radius = 1;
+        var res = [];
+        var x = tagLatitude;
+        var y = tagLongitude;
+        geotagArray.forEach(function (cur) {
+            var curX = cur.latitude-x;
+            var curY = cur.longitude-y;
+            var squareX = Math.pow(curX,2);
+            var squareY = Math.pow(curY,2);
+            var squareR = Math.pow(radius,2);
+            if((squareX+squareY)<=squareR) //im Bereich Zentrum +- radius
+            {
+                res.push(cur);
+            }
+        });
+        return res;
+    }
+    //Cleaned Up Version, diese sucht nur nach Hashtag oder Namen
+    searchGeoTags(searching) {
         let nearbyGeoTags = [];
-        let geoTagHash;
-        let geoTagName;
 
-        for (let i = 0; i < this.#setOfGeotags.length; i++) {
-            geoTagName = this.#setOfGeotags[i].name;
-            geoTagHash = this.#setOfGeotags[i].hashtag;
+        this.#setOfGeotags.forEach(geotag => {
+            let geoTagName = geotag.name;
+            let geoTagHash = geotag.hashtag;
 
             if(geoTagName.includes(searching) || geoTagHash.includes(searching)) {
-                match = this.#setOfGeotags[i];
-                nearbyGeoTags.push(match);
+                nearbyGeoTags.push(geotag);
+            }
+        });
+
+        return nearbyGeoTags;
+    }
+    //Cleaned Up Methode, überladen -> index.js
+    searchGeoTags(searching,geotagArray) {
+        let nearbyGeoTags = [];
+
+        geotagArray.forEach(geotag => {
+            let geoTagName = geotag.name;
+            let geoTagHash = geotag.hashtag;
+
+            if(geoTagName.includes(searching) || geoTagHash.includes(searching)) {
+                nearbyGeoTags.push(geotag);
+            }
+        });
+
+        return nearbyGeoTags;
+    }
+
+    //vorher wurde bei searchNearby nie wirklich nearby gesucht, weil die getNearby nicht darin aufgerufen wurde
+    //dies ist jetzt behoben. Daher Trennung zwischen search und searchNearby
+    searchNearbyGeoTags(searching) {
+        let match;
+        let nearbyGeoTags = this.getNearbyGeoTags(this.#setOfGeotags);
+        let res = [];
+
+        for (let i = 0; i < nearbyGeoTags.length; i++) {
+            let geoTagName = nearbyGeoTags[i].name;
+            let geoTagHash = nearbyGeoTags[i].hashtag;
+
+            if(geoTagName.includes(searching) || geoTagHash.includes(searching)) {
+                match = nearbyGeoTags[i];
+                res.push(match);
             }
         }
 
-        return nearbyGeoTags;
+        return res;
     }
 }
 
