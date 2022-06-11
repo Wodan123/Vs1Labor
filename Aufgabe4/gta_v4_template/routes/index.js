@@ -115,6 +115,9 @@ router.post('/discovery',(req, res)=> {
  */
 
 // TODO: ... your code here ...
+router.get('api/geotags', (req, res) => {
+  
+});
 
 
 /**
@@ -129,7 +132,9 @@ router.post('/discovery',(req, res)=> {
  */
 
 // TODO: ... your code here ...
+router.post("/api/geotags",(req,res) => {
 
+});
 
 /**
  * Route '/api/geotags/:id' for HTTP 'GET' requests.
@@ -142,7 +147,9 @@ router.post('/discovery',(req, res)=> {
  */
 
 // TODO: ... your code here ...
+router.get("/api/geotags/:id",(req,res) => {
 
+});
 
 /**
  * Route '/api/geotags/:id' for HTTP 'PUT' requests.
@@ -159,7 +166,9 @@ router.post('/discovery',(req, res)=> {
  */
 
 // TODO: ... your code here ...
-
+router.put("/api/geotags/:id",(req,res) => {
+  
+});
 
 /**
  * Route '/api/geotags/:id' for HTTP 'DELETE' requests.
@@ -173,5 +182,8 @@ router.post('/discovery',(req, res)=> {
  */
 
 // TODO: ... your code here ...
+router.delete("/api/geotags/:id",(req,res) => {
+  
+});
 
 module.exports = router;
