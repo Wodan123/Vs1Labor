@@ -122,8 +122,12 @@ class InMemoryGeoTagStore{
         return nearbyGeoTags;
     }
 
-    //vorher wurde bei searchNearby nie wirklich nearby gesucht, weil die getNearby nicht darin aufgerufen wurde
-    //dies ist jetzt behoben. Daher Trennung zwischen search und searchNearby
+    /**
+     * Warum funktioniert die searchNearbyGeoTags eigentlich, wenn in ihr nie die getNearby Methode aufgerufen wird,
+     * da wäre für mich noch etwas Aufklärung notwendig. Weil ich hatte probiert ein Array als Basis zu nehmen,
+     * in dem die Werte von getNearby dann drin stehen, dass ist das was auskommentiert ist. Hat aber nicht funktioniert.
+     */
+    
     searchNearbyGeoTags(searching) {
         let match;
         // let nearbyGeoTags = this.getNearbyGeoTags(this.#setOfGeotags);
