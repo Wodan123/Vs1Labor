@@ -73,12 +73,12 @@ class InMemoryGeoTagStore{
         return res;
     }
     //Methodenüberladung siehe index.js
-    getNearbyGeoTags(tagLatitude, tagLongitude, geotagArray) {
-        var radius = 1;
+    getNearbyGeoTagsO(tagLatitude, tagLongitude, geotagArray) {
+        var radius = 100;
         var res = [];
         var x = tagLatitude;
         var y = tagLongitude;
-        geotagArray.forEach(function (cur) {
+        geotagArray.forEach((cur) => {
             var curX = cur.latitude-x;
             var curY = cur.longitude-y;
             var squareX = Math.pow(curX,2);
@@ -107,7 +107,7 @@ class InMemoryGeoTagStore{
         return nearbyGeoTags;
     }
     //Cleaned Up Methode, überladen -> index.js
-    searchGeoTags(searching,geotagArray) {
+    searchGeoTagsO(searching, geotagArray) {
         let nearbyGeoTags = [];
 
         geotagArray.forEach(geotag => {
@@ -126,15 +126,15 @@ class InMemoryGeoTagStore{
     //dies ist jetzt behoben. Daher Trennung zwischen search und searchNearby
     searchNearbyGeoTags(searching) {
         let match;
-        let nearbyGeoTags = this.getNearbyGeoTags(this.#setOfGeotags);
+        // let nearbyGeoTags = this.getNearbyGeoTags(this.#setOfGeotags);
         let res = [];
 
-        for (let i = 0; i < nearbyGeoTags.length; i++) {
-            let geoTagName = nearbyGeoTags[i].name;
-            let geoTagHash = nearbyGeoTags[i].hashtag;
+        for (let i = 0; i < this.#setOfGeotags.length; i++) {
+            let geoTagName = this.#setOfGeotags[i].name;
+            let geoTagHash = this.#setOfGeotags[i].hashtag;
 
             if(geoTagName.includes(searching) || geoTagHash.includes(searching)) {
-                match = nearbyGeoTags[i];
+                match = this.#setOfGeotags[i];
                 res.push(match);
             }
         }

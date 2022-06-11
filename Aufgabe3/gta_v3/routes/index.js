@@ -73,7 +73,7 @@ router.post('/tagging',(req, res)=> {
       longvalue: req.body.tagLongitude, 
       mapGeoTagList: JSON.stringify(nearbyGT)
     });   
-})
+});
 /**
  * Route '/discovery' for HTTP 'POST' requests.
  * (http://expressjs.com/de/4x/api.html#app.post.method)

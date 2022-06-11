@@ -42,7 +42,7 @@ GeoTagStoreObject.examples(); //Lade die Geotag-Beispiele in unser Array
  */
 
 router.get('/', (req, res) => {
-  res.render('index', { taglist: [], latvalue : 0.0, longvalue : 0.0, mapGeoTagList : null })
+  res.render('index', {taglist: GeoTagStoreObject.getArray() , latvalue: "", longvalue: "", mapGeoTagList: JSON.stringify(GeoTagStoreObject.getArray())})
 });
 
 /**
@@ -71,7 +71,7 @@ router.post('/tagging',(req, res)=> {
       longvalue: req.body.tagLongitude, 
       mapGeoTagList: JSON.stringify(nearbyGT)
     });   
-})
+});
 /**
  * Route '/discovery' for HTTP 'POST' requests.
  * (http://expressjs.com/de/4x/api.html#app.post.method)
@@ -135,11 +135,11 @@ router.get('/api/geotags', (req, res) => {
       searchingWithCoords = searchingWithTerm;
     }
     else {
-      searchingWithCoords = GeoTagStoreObject.getNearbyGeoTags(latitude, longitude, searchingWithTerm);
+      searchingWithCoords = GeoTagStoreObject.getNearbyGeoTagsO(latitude, longitude, searchingWithTerm);
     }
   }
 
-  res.render("/index", {
+  res.render("index", {
     taglist : searchingWithCoords,
     mapGeoTagList: JSON.stringify(searchingWithCoords)
   });
