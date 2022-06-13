@@ -162,8 +162,12 @@ router.get('/api/geotags', (req, res) => {
 
 // TODO: ... your code here ...
 router.post("/api/geotags",(req,res) => {
+  
   let GeoTag = req.body.GeoTag;
 
+  //Einfügen des GeoTags in das #setOfGeoTags
+  //Rückgabe der URL als Antwort
+  //Response. als JSON rendern
   
 });
 
