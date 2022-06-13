@@ -141,6 +141,8 @@ router.get('/api/geotags', (req, res) => {
 
   res.render("index", {
     taglist : searchingWithCoords,
+    latvalue,
+    longvalue,
     mapGeoTagList: JSON.stringify(searchingWithCoords)
   });
 
