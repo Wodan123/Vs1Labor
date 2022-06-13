@@ -54,6 +54,28 @@ class InMemoryGeoTagStore{
         }
     }
 
+    getGeoTagID(id){
+
+        let gTID;
+
+        let retu;
+
+        for(let i = 0; i < this.#setOfGeotags.length;i++){
+
+            gTID= this.#setOfGeotags[i].id;
+
+            if(id.match(gTID)){
+
+                retu = this.#setOfGeotags[i];
+
+                return retu;
+
+            }
+
+        }
+
+    }
+
     getNearbyGeoTags(tagLatitude, tagLongitude) {
         var radius = 1;
         var res = [];
