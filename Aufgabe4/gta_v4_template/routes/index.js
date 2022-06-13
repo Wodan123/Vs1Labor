@@ -139,12 +139,13 @@ router.get('/api/geotags', (req, res) => {
     }
   }
 
-  res.render("index", {
+  res.json({
     taglist : searchingWithCoords,
-    mapGeoTagList: JSON.stringify(searchingWithCoords)
+    latvalue : latitude, 
+    longvalue : longitude,
   });
 
-  console.log(req.body);
+  // console.log(req.body);
 });
 
 
