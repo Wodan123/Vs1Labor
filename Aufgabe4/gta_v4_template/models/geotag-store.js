@@ -74,7 +74,7 @@ class InMemoryGeoTagStore{
     }
     //Methodenüberladung siehe index.js
     getNearbyGeoTagsO(tagLatitude, tagLongitude, geotagArray) {
-        var radius = 1;
+        var radius = 10;
         var res = [];
         var x = tagLatitude;
         var y = tagLongitude;

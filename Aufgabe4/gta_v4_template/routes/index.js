@@ -141,11 +141,10 @@ router.get('/api/geotags', (req, res) => {
 
   res.json({
     taglist : searchingWithCoords,
-    latvalue : latitude, 
-    longvalue : longitude,
+    latvalue : "", 
+    longvalue : "",
   });
 
-  // console.log(req.body);
 });
 
 
@@ -163,7 +162,24 @@ router.get('/api/geotags', (req, res) => {
 // TODO: ... your code here ...
 router.post("/api/geotags",(req,res) => {
   
-  let GeoTag = req.body.GeoTag;
+  //Annahme: Der GeoTag wird in dem Request der gesendet wird schon erstellt, also muss man diesen selbst nur noch aus dem Body
+  //holen und von JSON in ein Objekt umwandeln
+  
+  console.log(req.body);
+  let GeoTagString = req.body;
+  // console.log(GeoTagString);
+  let GeoTagObj = JSON.parse(GeoTagString);
+
+
+  
+
+  let arrayGT = GeoTagStoreObject.addGeoTag(GeoTagObj);
+
+  // res.header.set(URL,""); 
+
+  res.json({ 
+    taglist: arrayGT
+  });
 
   //Einfügen des GeoTags in das #setOfGeoTags
   //Rückgabe der URL als Antwort
