@@ -76,10 +76,10 @@
 
 router.get('/geotags', function(req, res){ 
    
-  console.log(req.query.search);
-    if(req.query.search !== undefined)   
+  console.log(req.query.searchbox);
+    if(req.query.searchbox !== undefined)   
     {
-      res.json(GeoTagStoreObject.searchNearbyGeoTags(req.query.search));
+      res.json(GeoTagStoreObject.searchNearbyGeoTags(req.query.searchbox));
     }else if(req.body.tagLatitude !== undefined && req.body.tagLongitude !== undefined) {
       res.json(GeoTagStoreObject.getNearbyGeoTags(req.body.tagLatitude, req.body.tagLongitude));
     }else
