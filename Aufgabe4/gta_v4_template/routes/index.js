@@ -162,15 +162,15 @@ router.get('/api/geotags', (req, res) => {
 // TODO: ... your code here ...
 router.post("/api/geotags",(req,res) => {
   
-  //Annahme: Der GeoTag wird in dem Request der gesendet wird schon erstellt, also muss man diesen selbst nur noch aus dem Body
-  //holen und von JSON in ein Objekt umwandeln
+  //Annahme: Der GeoTag wird in dem Request der gesendet wird schon erstellt, also muss man diesen selbst nur noch aus dem Body holen
   
-  console.log(req.body);
+  // console.log(req.body);
+
   let GeoT = req.body;
 
   let identifier = GeoTagStoreObject.getArray().length - 1; //Damit man die typische Zählweise eines Arrays beibehält und man mit 0 anfängt zu zählen
 
-  console.log(identifier);
+  // console.log(identifier);
 
   identifier++;
 
@@ -181,8 +181,6 @@ router.post("/api/geotags",(req,res) => {
   GeoTagStoreObject.addGeoTag(GeoTagPost);
   
   let arrayGT = GeoTagStoreObject.getArray();
-  
-  
 
   res.header("Location", `http://localhost:3000/api/geotags/${identifier}`);
 
@@ -190,10 +188,6 @@ router.post("/api/geotags",(req,res) => {
     Geotag : arrayGT[identifier]
   });
 
-  //Einfügen des GeoTags in das #setOfGeoTags
-  //Rückgabe der URL als Antwort
-  //Response. als JSON rendern
-  
 });
 
 /**
@@ -209,7 +203,17 @@ router.post("/api/geotags",(req,res) => {
 // TODO: ... your code here ...
 router.get("/api/geotags/:id",(req,res) => {
   
-  //Suchen bei dem Array mit der ID, wo alle GeoTags gespeichert sind
+  let identifier = req.params.id;
+
+  console.log(identifier);
+
+  let searchedGeotag = GeoTagStoreObject.getGeoTagID(identifier);
+
+  console.log(searchedGeotag);
+
+  // console.log(JSON.stringify(searchedGeotag));
+
+  res.send(JSON.stringify(searchedGeotag));
 
 });
 
