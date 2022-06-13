@@ -183,6 +183,8 @@ router.post("/api/geotags",(req,res) => {
 
 // TODO: ... your code here ...
 router.get("/api/geotags/:id",(req,res) => {
+  
+  //Suchen bei dem Array mit der ID, wo alle GeoTags gespeichert sind
 
 });
 
@@ -202,7 +204,7 @@ router.get("/api/geotags/:id",(req,res) => {
 
 // TODO: ... your code here ...
 router.put("/api/geotags/:id",(req,res) => {
-  
+  //Austauschen des GeoTags im Array, aber auch suchen so wie in der Methode davor
 });
 
 /**
@@ -218,7 +220,7 @@ router.put("/api/geotags/:id",(req,res) => {
 
 // TODO: ... your code here ...
 router.delete("/api/geotags/:id",(req,res) => {
-  
+  //Löschen des GeoTags im Array, wo man mit der ID nachsucht.
 });
 
 module.exports = router;
