@@ -152,7 +152,7 @@ router.get('/api/geotags', (req, res) => {
  * Route '/api/geotags' for HTTP 'POST' requests.
  * (http://expressjs.com/de/4x/api.html#app.post.method)
  *
- * Requests contain a GeoTag as JSON in the body.
+ * Requests contain a GeoTag as JSON????? (not true) in the body.
  * (http://expressjs.com/de/4x/api.html#req.query)
  *
  * The URL of the new resource is returned in the header as a response.
@@ -166,16 +166,27 @@ router.post("/api/geotags",(req,res) => {
   //holen und von JSON in ein Objekt umwandeln
   
   console.log(req.body);
-  let GeoTagString = req.body;
-  // console.log(GeoTagString);
-  let GeoTagObj = JSON.parse(GeoTagString);
+  let GeoT = req.body;
 
+  let identifier = GeoTagStoreObject.getArray().length - 1; //Damit man die typische Zählweise eines Arrays beibehält und man mit 0 anfängt zu zählen
 
+  console.log(identifier);
+
+  identifier++;
+
+  let GeoTagPost = new GeoTag(GeoT.name, GeoT.latitude, GeoT.longitude, GeoT.hashtag, identifier);
+
+  console.log(GeoTagPost);
   
-
-  let arrayGT = GeoTagStoreObject.addGeoTag(GeoTagObj);
+  GeoTagStoreObject.addGeoTag(GeoTagPost);
+  
+  let arrayGT = GeoTagStoreObject.getArray();
+  
+  // console.log(arrayGT);
 
   // res.header.set(URL,""); 
+
+  
 
   res.json({ 
     taglist: arrayGT
