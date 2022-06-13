@@ -139,14 +139,12 @@ router.get('/api/geotags', (req, res) => {
     }
   }
 
-  res.render("index", {
+  res.json({
     taglist : searchingWithCoords,
-    latvalue,
-    longvalue,
-    mapGeoTagList: JSON.stringify(searchingWithCoords)
+    latvalue : "", 
+    longvalue : "",
   });
 
-  console.log(req.body);
 });
 
 
@@ -154,7 +152,7 @@ router.get('/api/geotags', (req, res) => {
  * Route '/api/geotags' for HTTP 'POST' requests.
  * (http://expressjs.com/de/4x/api.html#app.post.method)
  *
- * Requests contain a GeoTag as JSON in the body.
+ * Requests contain a GeoTag as JSON????? (not true) in the body.
  * (http://expressjs.com/de/4x/api.html#req.query)
  *
  * The URL of the new resource is returned in the header as a response.
@@ -163,7 +161,39 @@ router.get('/api/geotags', (req, res) => {
 
 // TODO: ... your code here ...
 router.post("/api/geotags",(req,res) => {
+  
+  //Annahme: Der GeoTag wird in dem Request der gesendet wird schon erstellt, also muss man diesen selbst nur noch aus dem Body
+  //holen und von JSON in ein Objekt umwandeln
+  
+  console.log(req.body);
+  let GeoT = req.body;
 
+  let identifier = GeoTagStoreObject.getArray().length - 1; //Damit man die typische Zählweise eines Arrays beibehält und man mit 0 anfängt zu zählen
+
+  console.log(identifier);
+
+  identifier++;
+
+  let GeoTagPost = new GeoTag(GeoT.name, GeoT.latitude, GeoT.longitude, GeoT.hashtag, identifier);
+
+  console.log(GeoTagPost);
+  
+  GeoTagStoreObject.addGeoTag(GeoTagPost);
+  
+  let arrayGT = GeoTagStoreObject.getArray();
+  
+  
+
+  res.header("Location", `http://localhost:3000/api/geotags/${identifier}`);
+
+  res.json({ 
+    Geotag : arrayGT[identifier]
+  });
+
+  //Einfügen des GeoTags in das #setOfGeoTags
+  //Rückgabe der URL als Antwort
+  //Response. als JSON rendern
+  
 });
 
 /**
@@ -178,6 +208,8 @@ router.post("/api/geotags",(req,res) => {
 
 // TODO: ... your code here ...
 router.get("/api/geotags/:id",(req,res) => {
+  
+  //Suchen bei dem Array mit der ID, wo alle GeoTags gespeichert sind
 
 });
 
@@ -197,7 +229,7 @@ router.get("/api/geotags/:id",(req,res) => {
 
 // TODO: ... your code here ...
 router.put("/api/geotags/:id",(req,res) => {
-  
+  //Austauschen des GeoTags im Array, aber auch suchen so wie in der Methode davor
 });
 
 /**
@@ -213,7 +245,7 @@ router.put("/api/geotags/:id",(req,res) => {
 
 // TODO: ... your code here ...
 router.delete("/api/geotags/:id",(req,res) => {
-  
+  //Löschen des GeoTags im Array, wo man mit der ID nachsucht.
 });
 
 module.exports = router;

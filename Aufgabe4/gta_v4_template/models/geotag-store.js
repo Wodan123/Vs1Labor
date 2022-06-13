@@ -34,7 +34,7 @@ class InMemoryGeoTagStore{
     examples(){
         let tagList = GeoTagExamples.tagList;
         for (let i = 0; i < (GeoTagExamples.tagList).length; i++) {
-                this.addGeoTag(new GeoTag(tagList[i][0], tagList[i][1], tagList[i][2], tagList[i][3]));
+                this.addGeoTag(new GeoTag(tagList[i][0], tagList[i][1], tagList[i][2], tagList[i][3], tagList[i][4], tagList[i][5]));
         }
     }
     getArray(){
@@ -74,7 +74,7 @@ class InMemoryGeoTagStore{
     }
     //Methodenüberladung siehe index.js
     getNearbyGeoTagsO(tagLatitude, tagLongitude, geotagArray) {
-        var radius = 100;
+        var radius = 10;
         var res = [];
         var x = tagLatitude;
         var y = tagLongitude;
