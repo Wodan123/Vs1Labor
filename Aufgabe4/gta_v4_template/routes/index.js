@@ -182,14 +182,12 @@ router.post("/api/geotags",(req,res) => {
   
   let arrayGT = GeoTagStoreObject.getArray();
   
-  // console.log(arrayGT);
-
-  // res.header.set(URL,""); 
-
   
 
+  res.header("Location", `http://localhost:3000/api/geotags/${identifier}`);
+
   res.json({ 
-    taglist: arrayGT
+    Geotag : arrayGT[identifier]
   });
 
   //Einfügen des GeoTags in das #setOfGeoTags
