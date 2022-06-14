@@ -46,13 +46,36 @@ class InMemoryGeoTagStore{
     }
 
     removeGeoTag(name) {
-        for(let i = 0; i < this.setOfGeoTags.length; i++) {
-            if(name === this.#setOfGeotags[i].name) {
-                this.#setOfGeotags.splice(i);
+        let gtName;
+        for(let i = 0; i < this.#setOfGeotags.length; i++) {
+            gtName = this.#setOfGeotags[i].name;
+            if(name.match(gtName)) {
+                this.#setOfGeotags.splice(i,1);
                 break;
             }
         }
     }
+
+
+    // removeGeoTagID(id){
+
+    //     let gTID;
+
+    //     for(let i = 0; i < this.#setOfGeotags.length;i++){
+
+    //         gTID= this.#setOfGeotags[i].id;
+
+    //         if(id.match(gTID)){
+
+    //             retu = this.#setOfGeotags[i];
+                
+    //             break;
+
+    //         }
+
+    //     }
+
+    // }
 
     getGeoTagID(id){
 
@@ -77,7 +100,7 @@ class InMemoryGeoTagStore{
     }
 
     getNearbyGeoTags(tagLatitude, tagLongitude) {
-        var radius = 1;
+        var radius = 1.;
         var res = [];
         var x = tagLatitude;
         var y = tagLongitude;
@@ -96,7 +119,7 @@ class InMemoryGeoTagStore{
     }
     //Methodenüberladung siehe index.js
     getNearbyGeoTagsO(tagLatitude, tagLongitude, geotagArray) {
-        var radius = 10;
+        var radius = 1.;
         var res = [];
         var x = tagLatitude;
         var y = tagLongitude;

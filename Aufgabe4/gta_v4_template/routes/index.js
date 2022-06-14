@@ -140,9 +140,9 @@ router.get('/api/geotags', (req, res) => {
   }
 
   res.json({
-    taglist : searchingWithCoords,
-    latvalue : "", 
-    longvalue : "",
+    taglist : searchingWithCoords
+    // latvalue : "", 
+    // longvalue : "",
   });
 
 });
@@ -233,6 +233,25 @@ router.get("/api/geotags/:id",(req,res) => {
 
 // TODO: ... your code here ...
 router.put("/api/geotags/:id",(req,res) => {
+
+  let identifier = req.params.id;
+
+  let GeoT = req.body;
+
+  let GeoTagPost = new GeoTag(GeoT.name, GeoT.latitude, GeoT.longitude, GeoT.hashtag, identifier);
+
+  let searchedGT = GeoTagStoreObject.getGeoTagID(identifier);
+
+  console.log(searchedGT);
+
+  GeoTagStoreObject.removeGeoTag(searchedGT.name);
+
+  GeoTagStoreObject.addGeoTag(GeoTagPost);
+
+  let GTArr = GeoTagStoreObject.getArray();
+
+  res.send(JSON.stringify(GeoTagPost) + "\n" + JSON.stringify(GTArr));
+
   //Austauschen des GeoTags im Array, aber auch suchen so wie in der Methode davor
 });
 
@@ -249,6 +268,19 @@ router.put("/api/geotags/:id",(req,res) => {
 
 // TODO: ... your code here ...
 router.delete("/api/geotags/:id",(req,res) => {
+  
+  let identifier = req.params.id;
+
+  let searchedGT = GeoTagStoreObject.getGeoTagID(identifier);
+
+  console.log(searchedGT);
+
+  GeoTagStoreObject.removeGeoTag(searchedGT.name);
+
+  let GTArr = GeoTagStoreObject.getArray();
+
+  res.send(JSON.stringify(searchedGT) + '\n' + JSON.stringify(GTArr));
+
   //Löschen des GeoTags im Array, wo man mit der ID nachsucht.
 });
 
