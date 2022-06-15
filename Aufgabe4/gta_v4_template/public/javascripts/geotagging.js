@@ -18,6 +18,53 @@ function updateLocation() {
     }
 
 }
+// function getMapUpdate(geotag) {
+    //     let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
+    //     let lat = parseFloat(document.getElementById("taglatinput").getAttribute("value"));
+    //     let long = parseFloat(document.getElementById("taglonginput").getAttribute("value"));
+    //     let mapUrl = mapManager.getMapUrl(lat, long, JSON.parse(geotags));
+    //     document.getElementById("map").setAttribute("src", mapUrl);
+
+//     return geotags;
+// }
+
+async function postAddGT(geotag) {
+    let response = await fetch("http://localhost:3000/geotags", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(geotag),
+    });
+    return await response.json();
+}
+
+
+
+async function getGeotag(){
+    const res = await fetch("http://localhost:3000/geotags", {
+        method: "GET"
+    });
+    return res.json();
+}
+
+
+
+document.getElementById("tagbutton").addEventListener("click", function (evtLi) {
+    evtLi.preventDefault();
+
+    let geotag = {
+        name: document.getElementById("tagname").value,
+        latitude: document.getElementById("taglatinput").value,
+        longitude: document.getElementById("taglonginput").value,
+        hashtag: document.getElementById("taghashtag").value
+    }
+    console.log("erfolgreich");
+    postAddGT(geotag).then(async fun => mapUpdate(latitude, longitude));
+
+}, true);
+
+
+
+
 function mapUpdate(latitude, longitude) {
     let nearGeoTaglist = JSON.parse(document.getElementById("map").getAttribute("data-tags"));
     let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
