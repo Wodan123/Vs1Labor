@@ -1,6 +1,6 @@
 console.log("The geoTagging script is going to start...");
 
-function updateLocation() {
+function updateLocation(array) {
 
     if ((document.getElementById("taglatinput").getAttribute("value") === "" ||
         document.getElementById("taglonginput").getAttribute("value") === "")) {
@@ -9,66 +9,58 @@ function updateLocation() {
             document.getElementById("disclonginput").setAttribute("value", loc.longitude);
             document.getElementById("taglatinput").setAttribute("value", loc.latitude);
             document.getElementById("taglonginput").setAttribute("value", loc.longitude);
-            mapUpdate(loc.latitude, loc.longitude);
+            mapUpdate(loc.latitude, loc.longitude, array);
         });
     } else {
         let latitude = document.getElementById("taglatinput").getAttribute("value");
         let longitude = document.getElementById("taglonginput").getAttribute("value");
-        mapUpdate(latitude, longitude);
+        mapUpdate(latitude, longitude, array);
     }
 
 }
-// function getMapUpdate(geotag) {
-    //     let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
-    //     let lat = parseFloat(document.getElementById("taglatinput").getAttribute("value"));
-    //     let long = parseFloat(document.getElementById("taglonginput").getAttribute("value"));
-    //     let mapUrl = mapManager.getMapUrl(lat, long, JSON.parse(geotags));
-    //     document.getElementById("map").setAttribute("src", mapUrl);
-
-//     return geotags;
-// }
 
 async function postAddGT(geotag) {
-    let response = await fetch("http://localhost:3000/geotags", {
+    let response = await fetch("http://localhost:3000/api/geotags", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(geotag),
     });
-    return await response.json();
+    return response.json();
 }
 
 
 
-async function getGeotag(){
-    const res = await fetch("http://localhost:3000/geotags", {
+async function getGeotag() {
+    const res = await fetch("http://localhost:3000/api/geotags", {
         method: "GET"
     });
     return res.json();
 }
 
+var btn = document.getElementById("tagbutton");
 
 
-document.getElementById("tagbutton").addEventListener("click", function (evtLi) {
-    evtLi.preventDefault();
 
-    let geotag = {
-        name: document.getElementById("tagname").value,
-        latitude: document.getElementById("taglatinput").value,
-        longitude: document.getElementById("taglonginput").value,
-        hashtag: document.getElementById("taghashtag").value
-    }
+btn.addEventListener("click", function (e) {
+    console.log("???????????????????");
+    e.preventDefault();
+    if (document.getElementById("tag-form").reportValidity()) {
+        var geotag = {
+            name: document.getElementById("tagnameinput").value,
+            latitude: document.getElementById("taglatinput").getAttribute("value"),
+            longitude: document.getElementById("taglonginput").getAttribute("value"),
+            hashtag: document.getElementById("taghashtaginput").value
+        }
+    };
     console.log("erfolgreich");
-    postAddGT(geotag).then(async fun => mapUpdate(latitude, longitude));
+    postAddGT(geotag);
 
-}, true);
+});
 
-
-
-
-function mapUpdate(latitude, longitude) {
+function mapUpdate(latitude, longitude, array) {
     let nearGeoTaglist = JSON.parse(document.getElementById("map").getAttribute("data-tags"));
     let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
-    let mapUrl = mapManager.getMapUrl(latitude, longitude, nearGeoTaglist, 15);
+    let mapUrl = mapManager.getMapUrl(latitude, longitude, array == null ? nearGeoTaglist : array , 15);
     document.getElementById("map").setAttribute("src", mapUrl);
 }
 document.addEventListener("DOMContentLoaded", updateLocation(), true);
