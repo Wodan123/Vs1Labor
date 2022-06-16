@@ -1,5 +1,14 @@
 console.log("The geoTagging script is going to start...");
 
+let tagList = JSON.parse(document.getElementById("map").getAttribute("data-tags"));
+
+function mapUpdate(latitude, longitude) {
+    let nearGeoTaglist = JSON.parse(document.getElementById("map").getAttribute("data-tags"));
+    let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
+    let mapUrl = mapManager.getMapUrl(latitude, longitude, nearGeoTaglist, 15);
+    document.getElementById("map").setAttribute("src", mapUrl);
+}
+
 function updateLocation() {
 
     if ((document.getElementById("taglatinput").getAttribute("value") === "" ||
@@ -16,16 +25,16 @@ function updateLocation() {
         let longitude = document.getElementById("taglonginput").getAttribute("value");
         mapUpdate(latitude, longitude);
     }
-
 }
 
 async function postAddGT(geotag) {
+    console.log("Help!");
     let response = await fetch("http://localhost:3000/api/geotags", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(geotag),
     });
-    return await response.json();
+    return response;
 }
 
 async function getGeotag() {
@@ -35,42 +44,46 @@ async function getGeotag() {
     return res.json();
 }
 
-async function getTagList(searchTerm) {
-    let geotag = await fetch("http://localhost:3000/api/geotags/" + searchTerm);
-
-    geotag = await geotag.json();
-    geotag = JSON.parse(geotag);
-
-    let latitude = geotag.location.latitude;
-    let longitude = geotag.location.longitude;
-    let response = await fetch("http://localhost:3000/api/geotags?latitude=" + latitude + "&longitude=" + longitude + "&searchterm=" + searchTerm);
-    return await response.json();
-}
 
 var btn = document.getElementById("tagbutton");
+
+function apiMapUpdate(tagList){
+    let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
+    let lat = document.getElementById("taglatinput").getAttribute("value");
+    let lon = document.getElementById("taglonginput").getAttribute("value"); 
+    let mapUrl = mapManager.getMapUrl(lat, lon, JSON.parse(tagList),15);
+    document.getElementById("map").setAttribute("src", mapUrl);
+}
+
+function apiListUpdate(tagList){
+    tagList = JSON.parse(tagList);
+}
+
+
+
+
+
 
 
 
 btn.addEventListener("click", function (e) {
     console.log("???????????????????");
     e.preventDefault();
+    let lat = document.getElementById("taglatinput").getAttribute("value");
+    let lon = document.getElementById("taglonginput").getAttribute("value"); 
     if (document.getElementById("tag-form").reportValidity()) {
         var geotag = {
             name: document.getElementById("tagnameinput").value,
-            latitude: document.getElementById("taglatinput").getAttribute("value"),
-            longitude: document.getElementById("taglonginput").getAttribute("value"),
+            latitude: lat,
+            longitude: lon,
             hashtag: document.getElementById("taghashtaginput").value
         }
     };
     console.log("erfolgreich");
     postAddGT(geotag);
+    apiMapUpdate();
+    apiListUpdate();
 
 });
 
-function mapUpdate(latitude, longitude, array) {
-    let nearGeoTaglist = JSON.parse(document.getElementById("map").getAttribute("data-tags"));
-    let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
-    let mapUrl = mapManager.getMapUrl(latitude, longitude, array == null ? nearGeoTaglist : array , 15);
-    document.getElementById("map").setAttribute("src", mapUrl);
-}
 document.addEventListener("DOMContentLoaded", updateLocation(), true);

@@ -170,8 +170,6 @@
  
    let identifier = GeoTagStoreObject.getArray().length - 1; //Damit man die typische Zählweise eines Arrays beibehält und man mit 0 anfängt zu zählen
  
-   // console.log(identifier);
- 
    identifier++;
  
    let GeoTagPost = new GeoTag(GeoT.name, GeoT.latitude, GeoT.longitude, GeoT.hashtag, identifier);
