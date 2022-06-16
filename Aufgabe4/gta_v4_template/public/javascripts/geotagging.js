@@ -1,6 +1,6 @@
 console.log("The geoTagging script is going to start...");
 
-function updateLocation(array) {
+function updateLocation() {
 
     if ((document.getElementById("taglatinput").getAttribute("value") === "" ||
         document.getElementById("taglonginput").getAttribute("value") === "")) {
@@ -9,12 +9,12 @@ function updateLocation(array) {
             document.getElementById("disclonginput").setAttribute("value", loc.longitude);
             document.getElementById("taglatinput").setAttribute("value", loc.latitude);
             document.getElementById("taglonginput").setAttribute("value", loc.longitude);
-            mapUpdate(loc.latitude, loc.longitude, array);
+            mapUpdate(loc.latitude, loc.longitude);
         });
     } else {
         let latitude = document.getElementById("taglatinput").getAttribute("value");
         let longitude = document.getElementById("taglonginput").getAttribute("value");
-        mapUpdate(latitude, longitude, array);
+        mapUpdate(latitude, longitude);
     }
 
 }
@@ -25,16 +25,26 @@ async function postAddGT(geotag) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(geotag),
     });
-    return response.json();
+    return await response.json();
 }
-
-
 
 async function getGeotag() {
     const res = await fetch("http://localhost:3000/api/geotags", {
         method: "GET"
     });
     return res.json();
+}
+
+async function getTagList(searchTerm) {
+    let geotag = await fetch("http://localhost:3000/api/geotags/" + searchTerm);
+
+    geotag = await geotag.json();
+    geotag = JSON.parse(geotag);
+
+    let latitude = geotag.location.latitude;
+    let longitude = geotag.location.longitude;
+    let response = await fetch("http://localhost:3000/api/geotags?latitude=" + latitude + "&longitude=" + longitude + "&searchterm=" + searchTerm);
+    return await response.json();
 }
 
 var btn = document.getElementById("tagbutton");
