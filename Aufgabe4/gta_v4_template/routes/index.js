@@ -181,7 +181,6 @@
    let arrayGT = GeoTagStoreObject.getArray();
  
    res.header("Location", `http://localhost:3000/api/geotags/${identifier}`);
- 
    res.json({ 
      Geotag : arrayGT[identifier]
    });

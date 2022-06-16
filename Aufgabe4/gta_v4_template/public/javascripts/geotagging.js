@@ -34,7 +34,7 @@ async function postAddGT(geotag) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(geotag),
     });
-    return response;
+    return await response.json();
 }
 
 async function getGeotag() {
@@ -47,20 +47,25 @@ async function getGeotag() {
 
 var btn = document.getElementById("tagbutton");
 
-function apiMapUpdate(tagList){
+function apiMapUpdate(){
     let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
     let lat = document.getElementById("taglatinput").getAttribute("value");
     let lon = document.getElementById("taglonginput").getAttribute("value"); 
-    let mapUrl = mapManager.getMapUrl(lat, lon, JSON.parse(tagList),15);
+    let mapUrl = mapManager.getMapUrl(lat, lon, tagList,15);
     document.getElementById("map").setAttribute("src", mapUrl);
 }
 
-function apiListUpdate(tagList){
-    tagList = JSON.parse(tagList);
+// function apiListUpdate(tagList){
+//     tagList = JSON.parse(tagList);
+// }
+
+
+async function searchGeotags(val) {
+    const res = await fetch("http://localhost:3000/api/geotags?search=" + val, {
+        method: "GET",
+    });
+    return res.json();
 }
-
-
-
 
 
 
@@ -81,9 +86,10 @@ btn.addEventListener("click", function (e) {
     };
     console.log("erfolgreich");
     postAddGT(geotag);
+    // document.getElementById("discoverybutton").click();
     apiMapUpdate();
-    apiListUpdate();
-
-});
+    // apiListUpdate();
+    window.location.reload();
+}, true);
 
 document.addEventListener("DOMContentLoaded", updateLocation(), true);
