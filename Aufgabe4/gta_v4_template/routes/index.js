@@ -122,6 +122,10 @@
    let longitude = req.query.longitude;
  
    console.log(`Here is your searchterm: ${searchterm},${latitude},${longitude}`);
+
+   if (searchterm === undefined && latitude === undefined && longitude === undefined) {
+    return res.json(GeoTagStoreObject.getArray());
+   }
    
    /*First search, when only searchterm is avalaible */
    let searchingWithTerm = GeoTagStoreObject.searchGeoTags(searchterm);
@@ -138,11 +142,7 @@
        searchingWithCoords = GeoTagStoreObject.getNearbyGeoTagsO(latitude, longitude, searchingWithTerm);
      }
    }
- 
-   res.json({
-     taglist : searchingWithCoords
-   });
- 
+   res.json(searchingWithCoords);
  });
  
  
@@ -202,8 +202,6 @@
    let searchedGeotag = GeoTagStoreObject.getGeoTagID(identifier);
  
    console.log(searchedGeotag);
- 
-   // console.log(JSON.stringify(searchedGeotag));
  
    res.send(JSON.stringify(searchedGeotag));
  
