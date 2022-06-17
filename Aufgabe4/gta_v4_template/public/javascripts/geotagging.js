@@ -32,12 +32,12 @@ function apiMapUpdate(){
 }
 
 
-var nextBtn = document.getElementById("pagination-right");
-var preBtn = document.getElementById("pagination-left");
+var nextBtn = document.getElementById("pag-right");
+var previousBtn = document.getElementById("pag-left");
 
-var currentArr = array;
+var currentArray = array;
 var maxElemsPerPage = 5;
-var maxPs = Math.ceil(currentArr.length / maxElemsPerPage);
+var maxPs = Math.ceil(currentArray.length / maxElemsPerPage);
 var curPage = 1;
 
 
@@ -46,16 +46,16 @@ function updatePagination() {
     document.getElementById("discoveryResults").innerHTML = "";
     console.log("updatePagination");
 
-    for (i = (curPage - 1) * maxElemsPerPage;  i < (curPage * maxElemsPerPage) && i < currentArr.length; i++) {
-        var gtag = currentArr[i];
+    for (i = (curPage - 1) * maxElemsPerPage;  i < (curPage * maxElemsPerPage) && i < currentArray.length; i++) {
+        var gtag = currentArray[i];
         var newElem = document.createElement("li");
         newElem.innerHTML += '<li class="listitem">' + gtag.name + " ( " + gtag.latitude + "," + gtag.longitude + ") " + gtag.hashtag + '</li>';
         document.getElementById('discoveryResults').appendChild(newElem);
     }
-    document.getElementById("pagination-text").value = curPage + " / " + maxPs + "(" + currentArr.length + ")";
+    document.getElementById("pagination-text").value = curPage + " / " + maxPs + "(" + currentArray.length + ")";
 
-    if (curPage == 1) preBtn.disabled = true;
-    else preBtn.disabled = false;
+    if (curPage == 1) previousBtn.disabled = true;
+    else previousBtn.disabled = false;
 
     if (curPage == maxPs) nextBtn.disabled = true;
     else nextBtn.disabled = false;
@@ -79,7 +79,7 @@ nextBtn.addEventListener("click", async function (e) {
 });
 
 
-preBtn.addEventListener("click", async function (e) {
+previousBtn.addEventListener("click", async function (e) {
     if (curPage > 1) {
         curPage--;
         updatePagination();
