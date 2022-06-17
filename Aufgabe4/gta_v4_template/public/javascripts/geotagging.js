@@ -61,9 +61,6 @@ function updatePagination() {
     else nextBtn.disabled = false;
 
 }
-// async function calcMaxPages(arr) {
-//     maxPs = Math.ceil(arr.length / maxElemsPerPage);
-// }
 
 async function postAdd(geotag) {
     let response = await fetch("http://localhost:3000/api/geotags", {
