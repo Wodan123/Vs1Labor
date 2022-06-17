@@ -170,6 +170,8 @@
  
    let identifier = GeoTagStoreObject.getArray().length - 1; //Damit man die typische Zählweise eines Arrays beibehält und man mit 0 anfängt zu zählen
  
+   // console.log(identifier);
+ 
    identifier++;
  
    let GeoTagPost = new GeoTag(GeoT.name, GeoT.latitude, GeoT.longitude, GeoT.hashtag, identifier);
@@ -181,6 +183,7 @@
    let arrayGT = GeoTagStoreObject.getArray();
  
    res.header("Location", `http://localhost:3000/api/geotags/${identifier}`);
+ 
    res.json({ 
      Geotag : arrayGT[identifier]
    });
@@ -279,6 +282,27 @@
    res.send(JSON.stringify(searchedGT) + '\n' + JSON.stringify(GTArr));
  
    //Löschen des GeoTags im Array, wo man mit der ID nachsucht.
+ });
+ 
+ /**
+  * Route '/api/geotags/page/:number' for HTTP 'POST' request.
+  * (Pagination)
+  */
+ router.post('/api/geotags/page/:number', (req, res) => {
+     const NUMBER_OF_TAGS = 5;
+ 
+     let pageNumber = req.params.number - 1;
+     let geoTags = req.body;
+     let index = pageNumber * NUMBER_OF_TAGS;
+     let retArray = [];
+ 
+     for (let i = index; i < geoTags.length; i++) {
+         retArray.push(geoTags[i]);
+         if(retArray.length === NUMBER_OF_TAGS) {
+             break;
+         }
+     }
+     res.status(201).json(JSON.stringify(retArray));
  });
  
  module.exports = router;

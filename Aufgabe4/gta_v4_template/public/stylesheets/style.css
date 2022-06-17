@@ -202,6 +202,11 @@ li{
   min-height: 40vh;
 }
 
+.buto{
+  min-height: 5vh;
+  width: 5vw;
+}
+
 /* ### TODO ### Styles for Footer Component */
 
 /* ... your code here ... */

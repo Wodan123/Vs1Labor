@@ -74,6 +74,11 @@
                             <li class="listitem"><%= gtag.name %> ( <%= gtag.latitude %>,<%= gtag.longitude %>) <%= gtag.hashtag %> </li>
                         <% }); %>
                     </ul>
+                    <div id="pagination">
+                        <input class="pagination-elem" type="submit" id="pagination-left" value="&#60;"> 
+                        <input class="pagination-elem" type="text" id="pagination-text" value="" readonly>
+                        <input class="pagination-elem" type="submit" id="pagination-right" value="&#62;"> 
+                    </div>
                 </div>
 
                 <div class="discovery__map" id="mapdiv">
