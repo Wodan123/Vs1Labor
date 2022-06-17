@@ -1,8 +1,5 @@
 console.log("The geoTagging script is going to start...");
 
-let actualTaglist = JSON.parse(document.getElementById("map").getAttribute("data-tags"));
-const TAGS_NUMBER = 5;
-
 function mapUpdate(latitude, longitude) {
     let nearGeoTaglist = JSON.parse(document.getElementById("map").getAttribute("data-tags"));
     let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
@@ -21,7 +18,7 @@ function updateLocation() {
             document.getElementById("taglonginput").setAttribute("value", loc.longitude);
             mapUpdate(loc.latitude, loc.longitude);
         });
-        updatePagination;
+        updatePagination; //wurde vorher nicht aufgerufen, da () vergessen 
     }
 }
 function apiMapUpdate(array){
@@ -52,16 +49,16 @@ function updatePagination() {
         newElem.innerHTML = gtag.name + " ( " + gtag.latitude + "," + gtag.longitude + ") " + gtag.hashtag;
         document.getElementById('discoveryResults').appendChild(newElem);
     }
-    calcMaxPages(currentArr);
+    calcMaxPages(currentArr); 
     document.getElementById("pagination-text").value = curPage + " / " + maxPs + "(" + currentArr.length + ")";
 
-    if (curPage == 1) preBtn.disabled = true;
+    if (curPage === 1) preBtn.disabled = true;
     else preBtn.disabled = false;
 
-    if (curPage == maxPs) nextBtn.disabled = true;
+    if (curPage === maxPs) nextBtn.disabled = true;
     else nextBtn.disabled = false;
 
-    apiMapUpdate(currentArr);
+    // apiMapUpdate(currentArr);
 }
 async function calcMaxPages(arr) {
     maxPs = Math.ceil(arr.length / maxElemsPerPage);
@@ -111,7 +108,7 @@ document.getElementById("tag-form").addEventListener("submit", function (evt) {
 document.getElementById("discoverybutton").addEventListener("submit", function (evt) {
     evt.preventDefault();
 
-    apiMapUpdate.then(updatePagination);
+    apiMapUpdate().then(updatePagination);
 });
 
 
