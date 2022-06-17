@@ -1,5 +1,5 @@
 console.log("The geoTagging script is going to start...");
-
+let array = JSON.parse(document.getElementById("map").getAttribute("data-tags"));
 function mapUpdate(latitude, longitude) {
     let nearGeoTaglist = JSON.parse(document.getElementById("map").getAttribute("data-tags"));
     let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
@@ -18,51 +18,52 @@ function updateLocation() {
             document.getElementById("taglonginput").setAttribute("value", loc.longitude);
             mapUpdate(loc.latitude, loc.longitude);
         });
-        updatePagination; //wurde vorher nicht aufgerufen, da () vergessen 
+        updatePagination();
     }
 }
-function apiMapUpdate(array){
+function apiMapUpdate(){
     let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
-    let lat = parseFloat(document.getElementById("taglatinput").getAttribute("value"));
-    let lon = parseFloat(document.getElementById("taglonginput").getAttribute("value")); 
+    let lat = document.getElementById("taglatinput").getAttribute("value");
+    let lon = document.getElementById("taglonginput").getAttribute("value"); 
     let mapUrl = mapManager.getMapUrl(lat, lon, array,15);
     document.getElementById("map").setAttribute("src", mapUrl);
+
+    window.location.reload();
 }
 
 
 var nextBtn = document.getElementById("pagination-right");
 var preBtn = document.getElementById("pagination-left");
 
+var currentArr = array;
 var maxElemsPerPage = 5;
-var maxPs = -1;
+var maxPs = Math.ceil(currentArr.length / maxElemsPerPage);
 var curPage = 1;
-var currentArr;
+
 
 function updatePagination() {
-
+  
     document.getElementById("discoveryResults").innerHTML = "";
     console.log("updatePagination");
 
-    for (i = (curPage - 1) * maxElemsPerPage; i < currentArr.length && i < curPage * maxElemsPerPage; i++) {
+    for (i = (curPage - 1) * maxElemsPerPage;  i < (curPage * maxElemsPerPage) && i < currentArr.length; i++) {
         var gtag = currentArr[i];
         var newElem = document.createElement("li");
-        newElem.innerHTML = gtag.name + " ( " + gtag.latitude + "," + gtag.longitude + ") " + gtag.hashtag;
+        newElem.innerHTML += '<li class="listitem">' + gtag.name + " ( " + gtag.latitude + "," + gtag.longitude + ") " + gtag.hashtag + '</li>';
         document.getElementById('discoveryResults').appendChild(newElem);
     }
-    calcMaxPages(currentArr); 
     document.getElementById("pagination-text").value = curPage + " / " + maxPs + "(" + currentArr.length + ")";
 
-    if (curPage === 1) preBtn.disabled = true;
+    if (curPage == 1) preBtn.disabled = true;
     else preBtn.disabled = false;
 
-    if (curPage === maxPs) nextBtn.disabled = true;
+    if (curPage == maxPs) nextBtn.disabled = true;
     else nextBtn.disabled = false;
 
-    // apiMapUpdate(currentArr);
 }
-async function calcMaxPages(arr) {
-    maxPs = Math.ceil(arr.length / maxElemsPerPage);
-}
+// async function calcMaxPages(arr) {
+//     maxPs = Math.ceil(arr.length / maxElemsPerPage);
+// }
 
 async function postAdd(geotag) {
     let response = await fetch("http://localhost:3000/api/geotags", {
@@ -108,7 +109,7 @@ document.getElementById("tag-form").addEventListener("submit", function (evt) {
 document.getElementById("discoverybutton").addEventListener("submit", function (evt) {
     evt.preventDefault();
 
-    apiMapUpdate().then(updatePagination);
+    apiMapUpdate.then(updatePagination);
 });
 
 

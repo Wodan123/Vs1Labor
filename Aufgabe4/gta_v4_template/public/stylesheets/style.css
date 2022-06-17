@@ -180,7 +180,7 @@ button{
   width:40%;
 }
 li{
-  padding:1%;
+  padding:0%;
   list-style: none;
   margin-bottom: 1%;
 }
@@ -194,18 +194,21 @@ li{
   vertical-align: middle;
   border: 1px solid var(--border-color);
 }
+#pagination > input{
+  display: inline-block;
+  min-height: 5vh;
+  width: 26.3%;
+}
 
 #map{
   display: block;
   height: auto;
   width: auto;
   min-height: 40vh;
+  justify-items: center;
+  text-align: center;
 }
 
-.buto{
-  min-height: 5vh;
-  width: 5vw;
-}
 
 /* ### TODO ### Styles for Footer Component */
 
