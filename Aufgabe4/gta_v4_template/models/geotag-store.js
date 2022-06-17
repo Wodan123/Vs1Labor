@@ -44,6 +44,10 @@ class InMemoryGeoTagStore{
     addGeoTag(GeoTag) {
         this.#setOfGeotags.push(GeoTag);
     }
+    addGeoTagID(GeoTag, ID) {
+        let geoTagIDPos=this.#setOfGeotags;
+        geoTagIDPos.splice( ID, 0, GeoTag );
+    }
 
     removeGeoTag(name) {
         let gtName;
@@ -56,47 +60,39 @@ class InMemoryGeoTagStore{
         }
     }
 
-
-    // removeGeoTagID(id){
-
-    //     let gTID;
-
-    //     for(let i = 0; i < this.#setOfGeotags.length;i++){
-
-    //         gTID= this.#setOfGeotags[i].id;
-
-    //         if(id.match(gTID)){
-
-    //             retu = this.#setOfGeotags[i];
-                
-    //             break;
-
-    //         }
-
-    //     }
-
-    // }
+    removeGeoTagID(id){
+        let gTID;
+        for(let i = 0; i < this.#setOfGeotags.length;i++){
+            gTID= this.#setOfGeotags[i].id;
+            if(id.match(gTID)){
+                retu = this.#setOfGeotags[i];     
+                break;
+            }
+        }
+    }
 
     getGeoTagID(id){
 
         let gTID;
-
         let retu;
-
         for(let i = 0; i < this.#setOfGeotags.length;i++){
-
             gTID= this.#setOfGeotags[i].id;
-
             if(id.match(gTID)){
-
                 retu = this.#setOfGeotags[i];
-
                 return retu;
-
             }
-
         }
-
+    }
+    searchGeoTagID(id){
+        console.log(id);
+        let retu;
+        for(let i = 0; i < this.#setOfGeotags.length;i++){
+            console.log(this.#setOfGeotags[i].id);
+            if(id == this.#setOfGeotags[i].id){
+                retu = this.#setOfGeotags[i];
+                return retu;
+            }
+        }
     }
 
     getNearbyGeoTags(tagLatitude, tagLongitude) {
@@ -141,21 +137,6 @@ class InMemoryGeoTagStore{
         let nearbyGeoTags = [];
 
         this.#setOfGeotags.forEach(geotag => {
-            let geoTagName = geotag.name;
-            let geoTagHash = geotag.hashtag;
-
-            if(geoTagName.includes(searching) || geoTagHash.includes(searching)) {
-                nearbyGeoTags.push(geotag);
-            }
-        });
-
-        return nearbyGeoTags;
-    }
-    //Cleaned Up Methode, überladen -> index.js
-    searchGeoTagsO(searching, geotagArray) {
-        let nearbyGeoTags = [];
-
-        geotagArray.forEach(geotag => {
             let geoTagName = geotag.name;
             let geoTagHash = geotag.hashtag;
 

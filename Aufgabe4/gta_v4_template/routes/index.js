@@ -141,8 +141,6 @@
  
    res.json({
      taglist : searchingWithCoords
-     // latvalue : "", 
-     // longvalue : "",
    });
  
  });
@@ -228,19 +226,17 @@
  // TODO: ... your code here ...
  router.put("/api/geotags/:id",(req,res) => {
  
-   let identifier = req.params.id;
+   var identifier = req.params.id.split(":");
  
    let GeoT = req.body;
- 
-   let GeoTagPost = new GeoTag(GeoT.name, GeoT.latitude, GeoT.longitude, GeoT.hashtag, identifier);
- 
-   let searchedGT = GeoTagStoreObject.getGeoTagID(identifier);
- 
-   console.log(searchedGT);
- 
+  
+   let searchedGT = GeoTagStoreObject.searchGeoTagID(identifier[1]);
+
    GeoTagStoreObject.removeGeoTag(searchedGT.name);
+   
+   let GeoTagPost = new GeoTag(GeoT.name, GeoT.latitude, GeoT.longitude, GeoT.hashtag, parseInt(identifier[1]));
  
-   GeoTagStoreObject.addGeoTag(GeoTagPost);
+   GeoTagStoreObject.addGeoTagID(GeoTagPost,parseInt(identifier[1]));
  
    let GTArr = GeoTagStoreObject.getArray();
  
@@ -263,10 +259,10 @@
  // TODO: ... your code here ...
  router.delete("/api/geotags/:id",(req,res) => {
    
-   let identifier = req.params.id;
+  var identifier = req.params.id.split(":");
  
-   let searchedGT = GeoTagStoreObject.getGeoTagID(identifier);
- 
+  let searchedGT = GeoTagStoreObject.searchGeoTagID(identifier[1]);
+   
    console.log(searchedGT);
  
    GeoTagStoreObject.removeGeoTag(searchedGT.name);
@@ -277,26 +273,6 @@
  
    //Löschen des GeoTags im Array, wo man mit der ID nachsucht.
  });
- 
- /**
-  * Route '/api/geotags/page/:number' for HTTP 'POST' request.
-  * (Pagination)
-  */
- router.post('/api/geotags/page/:number', (req, res) => {
-     const NUMBER_OF_TAGS = 5;
- 
-     let pageNumber = req.params.number - 1;
-     let geoTags = req.body;
-     let index = pageNumber * NUMBER_OF_TAGS;
-     let retArray = [];
- 
-     for (let i = index; i < geoTags.length; i++) {
-         retArray.push(geoTags[i]);
-         if(retArray.length === NUMBER_OF_TAGS) {
-             break;
-         }
-     }
-     res.status(201).json(JSON.stringify(retArray));
- });
+
  
  module.exports = router;
