@@ -86,8 +86,8 @@ preBtn.addEventListener("click", async function (e) {
     }
 });
 
-
-document.getElementById("tag-form").addEventListener("submit", function (evt) {
+//Hier wurde async vergession für die Fkt, aber es funktioniert wie vorher einfach async geadded
+document.getElementById("tag-form").addEventListener("submit", async function (evt) {
     evt.preventDefault();
 
     let geotag = {
@@ -104,7 +104,8 @@ document.getElementById("tag-form").addEventListener("submit", function (evt) {
     document.getElementById("discoveryinput").value = "";
 }, true);
 
-document.getElementById("discoverybutton").addEventListener("submit", function (evt) {
+//hier auch async function vergessen
+document.getElementById("discoverybutton").addEventListener("submit", async function (evt) {
     evt.preventDefault();
 
     apiMapUpdate.then(updatePagination); //Button Discovery
