@@ -18,6 +18,29 @@ function updateLocation() {
     }
 
 }
+
+async function postAddGT(geotag) {
+    let response = await fetch("http://localhost:3000/api/geotags", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(geotag),
+    });
+    return await response.json();
+}
+
+document.getElementById("tagbutton").addEventListener("click", function (evtLi) {
+    evtLi.preventDefault();
+ 
+    let geotag = {
+        name: document.getElementById("tagname").value,
+        latitude: document.getElementById("taglatinput").value,
+        longitude: document.getElementById("taglonginput").value,
+        hashtag: document.getElementById("taghashtag").value
+    }
+    console.log("Erfolgreich");
+    postAddGT(geotag).then(getMapUpdate());
+}, true);
+
 function mapUpdate(latitude, longitude) {
     let nearGeoTaglist = JSON.parse(document.getElementById("map").getAttribute("data-tags"));
     let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");

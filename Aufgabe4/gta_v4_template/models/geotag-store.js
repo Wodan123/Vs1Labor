@@ -117,6 +117,7 @@ class InMemoryGeoTagStore{
         });
         return res;
     }
+    
     //Methodenüberladung siehe index.js
     getNearbyGeoTagsO(tagLatitude, tagLongitude, geotagArray) {
         var radius = 1.;
