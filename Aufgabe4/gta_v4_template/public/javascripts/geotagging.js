@@ -97,7 +97,8 @@ document.getElementById("tag-form").addEventListener("submit", function (evt) {
         hashtag: document.getElementById("taghashtaginput").value
     }
 
-    postAdd(geotag).then(apiMapUpdate).then(updatePagination);
+    postAdd(geotag).then(apiMapUpdate).then(updatePagination); //Tagging (Formular)
+
     document.getElementById("tagnameinput").value = "";
     document.getElementById("taghashtaginput").value = "";
     document.getElementById("discoveryinput").value = "";
@@ -106,7 +107,7 @@ document.getElementById("tag-form").addEventListener("submit", function (evt) {
 document.getElementById("discoverybutton").addEventListener("submit", function (evt) {
     evt.preventDefault();
 
-    apiMapUpdate.then(updatePagination);
+    apiMapUpdate.then(updatePagination); //Button Discovery
 });
 
 
