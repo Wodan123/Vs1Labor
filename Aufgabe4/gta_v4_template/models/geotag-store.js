@@ -133,6 +133,7 @@ class InMemoryGeoTagStore{
         });
         return res;
     }
+    
     //Cleaned Up Version, diese sucht nur nach Hashtag oder Namen
     searchGeoTags(searching) {
         let nearbyGeoTags = [];
@@ -149,15 +150,9 @@ class InMemoryGeoTagStore{
         return nearbyGeoTags;
     }
 
-    /**
-     * Warum funktioniert die searchNearbyGeoTags eigentlich, wenn in ihr nie die getNearby Methode aufgerufen wird,
-     * da wäre für mich noch etwas Aufklärung notwendig. Weil ich hatte probiert ein Array als Basis zu nehmen,
-     * in dem die Werte von getNearby dann drin stehen, dass ist das was auskommentiert ist. Hat aber nicht funktioniert.
-     */
     
     searchNearbyGeoTags(searching) {
         let match;
-        // let nearbyGeoTags = this.getNearbyGeoTags(this.#setOfGeotags);
         let res = [];
 
         for (let i = 0; i < this.#setOfGeotags.length; i++) {

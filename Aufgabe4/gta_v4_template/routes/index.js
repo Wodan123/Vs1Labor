@@ -121,7 +121,7 @@
    let latitude = req.query.latitude;
    let longitude = req.query.longitude;
  
-   console.log(`Here is your searchterm: ${searchterm},${latitude},${longitude}`);
+  //  console.log(`Here is your searchterm: ${searchterm},${latitude},${longitude}`);
 
    if (searchterm === undefined && latitude === undefined && longitude === undefined) {
     return res.json(GeoTagStoreObject.getArray());
