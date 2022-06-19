@@ -142,7 +142,7 @@
        searchingWithCoords = GeoTagStoreObject.getNearbyGeoTagsO(latitude, longitude, searchingWithTerm);
      }
    }
-   res.json(searchingWithCoords);
+   res.json(searchingWithCoords); 
  });
  
  
