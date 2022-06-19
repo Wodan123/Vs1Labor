@@ -138,6 +138,7 @@ document.getElementById("discoverybutton").addEventListener("click", async (e) =
     }
 
     apiMapUpdate();
+    curPage = 1;
     updatePagination(result);
 });
 
