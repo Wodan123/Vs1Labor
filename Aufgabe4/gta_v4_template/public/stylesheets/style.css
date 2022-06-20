@@ -208,7 +208,10 @@ li{
   justify-items: center;
   text-align: center;
 }
-
+#pagination-text{
+  display: flex;
+  text-align: center;
+}
 
 /* ### TODO ### Styles for Footer Component */
 

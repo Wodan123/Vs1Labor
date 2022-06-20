@@ -40,21 +40,14 @@ function updateLocation() {
     }
 }
 
-function apiMapUpdate(){
-    let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
-    let lat = document.getElementById("taglatinput").getAttribute("value");
-    let lon = document.getElementById("taglonginput").getAttribute("value"); 
-    let mapUrl = mapManager.getMapUrl(lat, lon, globalArray, 15);
-    document.getElementById("map").setAttribute("src", mapUrl);
 
-    // window.location.reload();
-}
 
 function updatePagination(searchresult) {
     document.getElementById("discoveryResults").innerHTML = "";
     if (searchresult !== undefined) {
         globalArray = searchresult;
         maxPs = Math.ceil(globalArray.length / maxElemsPerPage);
+        curPage=1;
     }
     for (i = (curPage - 1) * maxElemsPerPage;  i < (curPage * maxElemsPerPage) && i < globalArray.length; i++) {
         var gtag = globalArray[i];
@@ -73,6 +66,15 @@ function updatePagination(searchresult) {
 
 }
 
+function apiMapUpdate(){
+    let mapManager = new MapManager("yaMPFXET2G0vG84h8G9MxGQBo2a35oVc");
+    let lat = document.getElementById("taglatinput").getAttribute("value");
+    let lon = document.getElementById("taglonginput").getAttribute("value"); 
+    let mapUrl = mapManager.getMapUrl(lat, lon, globalArray, 15);
+    document.getElementById("map").setAttribute("src", mapUrl);
+
+    // window.location.reload();
+}
 async function postAdd(geotag) {
     let response = await fetch("api/geotags", {
         method: "POST",
@@ -137,8 +139,8 @@ document.getElementById("discoverybutton").addEventListener("click", async (e) =
         result = globalArray;
     }
 
-    apiMapUpdate();
     updatePagination(result);
+    apiMapUpdate();
 });
 
 
